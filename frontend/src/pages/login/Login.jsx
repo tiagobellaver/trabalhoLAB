@@ -27,7 +27,7 @@ export default props =>
                         <Input type="password" placeholder="Senha"/>
                     </FormGroup>
                     <FormGroup className="d-flex justify-content-center">
-                        <Link to="/home" type="button" className="login-button">Entrar</Link>
+                        <Link to="/" type="button" className="login-button">Entrar</Link>
                     </FormGroup>
                 </Form>
             </Col>

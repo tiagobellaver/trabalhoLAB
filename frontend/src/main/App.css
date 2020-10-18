@@ -59,3 +59,12 @@
     width: 20%;
     border: 1px solid #D81159;
 }
+
+.content-container {
+    margin-top: 60px;
+    margin-left: 120px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    height: 81vh;
+    background-color: white;
+}
