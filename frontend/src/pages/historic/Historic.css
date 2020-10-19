@@ -1,0 +1,20 @@
+th {
+    color:  #3066BE;
+    font-size: 12px;
+}
+
+.details-button {
+    color: black;
+}
+.details-button:hover {
+    color: #3066BE;
+    text-decoration:none; 
+}
+.details-titles {
+    color:  #3066BE;
+    font-size: 14px;
+}
+.details {
+    color: black;
+    font-size: 14px;
+}
