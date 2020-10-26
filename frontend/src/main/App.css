@@ -75,8 +75,32 @@
     border-top-right-radius: 30px;
     height: 81vh;
     background-color: white;
+    max-width: 900px;
 }
+
+.table td, .table th {
+    text-align: center;
+}
+
 th {
     color:  #3066BE;
     font-size: 12px;
+    font-weight: 600;
+}
+
+.link-option, .link-option-del {
+    color: #000000;
+    text-decoration: none !important;
+}
+
+.link-option {
+    margin-right: 10px;
+}
+
+.link-option:hover {
+    color: #3066BE;
+}
+
+.link-option-del:hover {
+    color: #D81159;
 }

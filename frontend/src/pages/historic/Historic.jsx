@@ -32,7 +32,8 @@ export default props =>
                                 <td>testinho</td>
                                 <td>testando</td>
                                 <td>
-                                    <Link to="/historico-detalhe" type="button" className="details-button">Detalhes</Link>
+                                    <Link to="/historico-detalhe" type="button" className="link-option">Detalhes</Link>
+                                    <Link to="/historico-detalhe" type="button" className="link-option-del">Excluir Registro</Link>
                                 </td>
                             </tr>
                         </tbody>
