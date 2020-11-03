@@ -14,7 +14,7 @@ export default props =>
                 <h1 className="title-page">Sobre</h1>
                 <hr className="title-line"/>
                 <Col sm={10} md={10} lg={10} className="content-container">
-                    a
+                    <p className="p-text-value">Trabalho desenvolvido para a máteria de Laboratório de Desenvolvimento</p> 
                 </Col>
             </Col>
         </Row>

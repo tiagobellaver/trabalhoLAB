@@ -5,15 +5,15 @@ import { Link } from 'react-router-dom'
 import Navbar from '../../components/Navbar/Navbar';
 export default props =>
 <>
-<Container fluid>
+    <Container fluid>
         <Row>
             <Col sm={2} md={2} className="p-0 nav">
                 <Navbar />
             </Col>
             <Col Col sm={10} md={10} className="p-0 main-context">
                 <div>
-                <h1 className="title-page">Histórico</h1>
-                <hr className="title-line"/>
+                    <h1 className="title-page">Histórico</h1>
+                    <hr className="title-line"/>
                 </div>
                 <div className="padd-dash content-container">
                     <div className="access-card flex-line">
