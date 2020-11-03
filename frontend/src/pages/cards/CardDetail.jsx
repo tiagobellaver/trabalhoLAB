@@ -2,6 +2,7 @@ import React  from 'react';
 import { Link } from 'react-router-dom'
 import {Container, Row, Col, CardImg } from 'reactstrap';
 import Navbar from '../../components/Navbar/Navbar';
+import { Image } from 'react-bootstrap';
 export default props =>
 <>
 <Container fluid>
@@ -21,7 +22,7 @@ export default props =>
                     <Container>
                         <Row className="user-details">
                             <Col Col>
-                                <img src="https://img.ibxk.com.br/materias/5866/21592.jpg?w=328" alt="Card image cap" />
+                                <Image src="https://img.ibxk.com.br/materias/5866/21592.jpg?w=328" fluid/>
                             </Col>
                             <Col Col >
                                 <ul className="user-card-list">
