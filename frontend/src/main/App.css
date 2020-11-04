@@ -169,3 +169,13 @@ td {
     border-top: 1px solid #cccccc;
     padding-top: 6px;
 }
+
+.card-create-padding {
+    padding-top: 100px;
+}
+
+.button-centralizer {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}

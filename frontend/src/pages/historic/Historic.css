@@ -53,8 +53,3 @@ p {
 .user-card-list .card-item:last-child {
     margin-bottom: 0;
 }
-
-.options-card {
-    border-top: 1px solid #cccccc;
-    padding-top: 6px;
-}

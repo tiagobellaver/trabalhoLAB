@@ -15,6 +15,8 @@ export default props =>
                 <hr className="title-line"/>
                 <Col sm={10} md={10} lg={10} className="content-container">
                 <Link to="/cartao-detalhe" type="button" className="link-option">Detalhes</Link>
+                <Link to="/cadastrar-cartao" type="button" className="link-option">Novo cartão</Link>
+                <Link to="/alterar-cartao" type="button" className="link-option">Edição cartão</Link>
                 </Col>
             </Col>
         </Row>
