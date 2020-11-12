@@ -1,19 +1,16 @@
-const LivroControlador = require('../controladores/livro-controlador');
-const livroControlador = new LivroControlador();
+const UsuarioControlador = require('../controllers/usuario-controller');
+const usuarioControlador = new UsuarioControlador();
 
-const Livro = require('../models/livro');
+const Usuario = require('../models/usuario');
 
 module.exports = (app) => {
-    const rotasLivro = LivroControlador.rotas();
-    
-    app.get(rotasLivro.lista, livroControlador.lista());
-
-    app.route(rotasLivro.cadastro)
-        .get(livroControlador.formularioCadastro())
-        .post(Livro.validacoes(), livroControlador.cadastra())
-        .put(livroControlador.edita());
-
-    app.get(rotasLivro.edicao, livroControlador.formularioEdicao());
-
-    app.delete(rotasLivro.delecao, livroControlador.remove());
+    const rotasUsuario = UsuarioControlador.rotas();
+    app.get(rotasUsuario.lista, usuarioControlador.lista());
+    app.get(rotasUsuario.mostrar, usuarioControlador.mostrarUsuario());
+    app.post(rotasUsuario.cadastrar, Usuario.validacoes(), usuarioControlador.cadastra());
+    app.put(rotasUsuario.editar, Usuario.validacoes(), usuarioControlador.edita());
+    app.delete(rotasUsuario.deletar, usuarioControlador.remove());
+    app.post(rotasUsuario.alterarSenha, usuarioControlador.alterarSenha());
+    app.get(rotasUsuario.mostrarDispositivos, usuarioControlador.mostrarDispositivos());
+    app.get(rotasUsuario.mostrarCartoes, usuarioControlador.mostrarCartoes());
 };

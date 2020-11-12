@@ -90,6 +90,15 @@ bd.serialize(() => {
     bd.run(USUARIO_CARTAO_SCHEMA );
     bd.run(CARTAO_DISPOSITIVO_SCHEMA );
     bd.run(USUARIO_DISPOSITIVO_SCHEMA);
+    bd.each(
+        `SELECT cartao.id as "id", cartao.apelido as "apelido", cartao.rfid as "rfid"
+    FROM usuario
+    INNER JOIN usuario_cartao on usuario.id = usuario_cartao.usuario
+    INNER JOIN cartao on usuario_cartao.cartao = cartao.id
+    WHERE usuario.id = 1`, (err, usuario) => {
+        console.log('Usuario: ');
+        console.log(usuario);
+    });
 });
 
 process.on('SIGINT', () =>

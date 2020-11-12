@@ -7,6 +7,8 @@ class CartaoDao {
     }
 
     adiciona_usuario_cartao(usuario_id, lastId) {
+        console.log(usuario_id);
+        console.log(lastId);
         return new Promise((resolve, reject) => {
             this._db.run(`
                 INSERT INTO usuario_cartao (

@@ -10,15 +10,17 @@ class UsuarioControlador {
         return {
             lista: '/api/usuarios',
             mostrar: '/api/usuario/:id',
-            cadastro: '/api/usuario/adicionar',
-            edicao: '/api/usuario/editar/:id',
-            deletar: '/api/usuario/deletar/:id'
+            cadastrar: '/api/usuario/adicionar',
+            editar: '/api/usuario/editar/:id',
+            deletar: '/api/usuario/deletar/:id',
+            alterarSenha: '/api/usuario/senha/:id',
+            mostrarDispositivos: '/api/usuario/:id/dispositivo',
+            mostrarCartoes: '/api/usuario/:id/cartao'
         };
     }
 
     lista() {
         return function(req, resp) {
-            console.log(req.body.usuario);
             usuarioDao.lista()
                     .then(usuarios => {
                         return resp.json({usuarios:usuarios});
@@ -53,25 +55,25 @@ class UsuarioControlador {
             }
     
             usuarioDao.adiciona(req.body)
-                    .then(() => {
-                            return resp.status(200).end();
-                    }).catch(erro => {
-                        resp.status(500).end()
-                        console.log(erro);
-                    });
+                .then(() => {
+                        return resp.status(200).end();
+                }).catch(erro => {
+                    resp.status(500).end()
+                    console.log(erro);
+                });
         };
     }
 
     edita() {
         return function(req, resp) {
             usuarioDao.atualiza(req)
-                    .then(()=>{
-                        return resp.status(200).end();
-                    })
-                    .catch(erro => {
-                        resp.status(500).end();
-                        console.log(erro);
-                    });
+                .then(()=>{
+                    return resp.status(200).end();
+                })
+                .catch(erro => {
+                    resp.status(500).end();
+                    console.log(erro);
+                });
         };
     }
 
@@ -79,11 +81,46 @@ class UsuarioControlador {
         return function(req, resp) {
             const id = req.params.id;
             usuarioDao.remove(id)
-                    .then(() => resp.status(200).end())
-                    .catch(erro => {
-                        resp.status(500).end();
-                        console.log(erro);
-                    });
+                .then(() => resp.status(200).end())
+                .catch(erro => {
+                    resp.status(500).end();
+                    console.log(erro);
+                });
+        };
+    }
+
+    alterarSenha() {
+        return function(req, resp) {
+            usuarioDao.alterarSenha(req)
+                .then(() => resp.status(200).end())
+                .catch(erro => {
+                    resp.status(500).end();
+                    console.log(erro);
+                });
+        };
+    }
+
+    mostrarDispositivos() {
+        return function(req, resp) {
+            usuarioDao.mostrarDispositivos(req.params.id)
+                .then(dispositivos => {
+                    return resp.json({dispositivos:dispositivos});
+                }).catch(erro => {
+                    resp.status(500).end();
+                    console.log(erro);
+                });
+        };
+    }
+
+    mostrarCartoes() {
+        return function(req, resp) {
+            usuarioDao.mostrarCartoes(req.params.id)
+                .then(cartoes => {
+                    return resp.json({cartoes:cartoes});
+                }).catch(erro => {
+                    resp.status(500).end();
+                    console.log(erro);
+                });
         };
     }
 }
