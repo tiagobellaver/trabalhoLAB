@@ -2,7 +2,7 @@
 
 ## Sobre
 
-Simples aplicação demonstrativa do escalonamento de processos no Sistema Operacional. Desenvolvido para a matéria de Sistemas Operacionais I.
+Aplicação que recebe dados de um sensor RFID rodando em um Arduino e armazena o histórico de tentativas de acesso.
 
 ## Instalando as dependências
 
