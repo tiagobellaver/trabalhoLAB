@@ -17,6 +17,7 @@ Para executar ou modificar a aplicação em seu local, é necessário ter instal
   - [MacOS](https://nodejs.org/en/download/)
 
   Yarn:
+  
     - [Instalar](https://classic.yarnpkg.com/en/docs/install/)
 
 ## Executando
