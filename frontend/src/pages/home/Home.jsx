@@ -1,5 +1,5 @@
 import React  from 'react';
-import { Container, Row, Col  } from 'reactstrap';
+import { Container, Row, Col, Table  } from 'reactstrap';
 
 import Navbar from '../../components/Navbar/Navbar';
 import './home.css';
@@ -15,7 +15,20 @@ export default props =>
                 <h1 className="title-page">Dashboard</h1>
                 <hr className="title-line"/>
                 <Col sm={10} md={10} lg={10} className="content-container">
-                    a
+                    <Table>
+                        <thead>
+                            <tr>
+                                <th>HISTÓRICO</th>
+                                <th>CARTÕES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Teste</td>
+                            </tr>
+                        </tbody>
+                    </Table>
                 </Col>
             </Col>
         </Row>
