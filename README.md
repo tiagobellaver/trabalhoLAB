@@ -18,7 +18,7 @@ Para executar ou modificar a aplicação em seu local, é necessário ter instal
 
   Yarn:
   
-    - [Instalar](https://classic.yarnpkg.com/en/docs/install/)
+  - [Instalar](https://classic.yarnpkg.com/en/docs/install/)
 
 ## Executando
   
@@ -26,11 +26,11 @@ Para executar ou modificar a aplicação em seu local, é necessário ter instal
 
   > cd backend/
 
-  Execute o comando a baixo para instalar as dependências necessárias:
+  Execute o comando abaixo para instalar as dependências necessárias:
 
   > yarn install
 
-  Instaladas as dependências, use o comando a baixo para executar a aplicação:
+  Instaladas as dependências, use o comando abaixo para executar a aplicação:
 
   > yarn start
   
@@ -41,14 +41,14 @@ Para executar ou modificar a aplicação em seu local, é necessário ter instal
 
   > cd frontend/
 
-  Execute o comando a baixo para instalar as dependências necessárias:
+  Execute o comando abaixo para instalar as dependências necessárias:
 
   > yarn install
 
-  Instaladas as dependências, use o comando a baixo para executar a aplicação:
+  Instaladas as dependências, use o comando abaixo para executar a aplicação:
 
   > yarn start
   
-  Esses comandos irão iniciar o servidor frontend rodando na porta 3000. O mesmo contém o front da aplicação que deve ser acessada através do navegador.
+  Esses comandos irão iniciar o servidor frontend rodando na porta 3000. O mesmo contém a parte visual da aplicação que deve ser acessada através do navegador.
   
 
