@@ -84,8 +84,8 @@ export default props =>
                             </Container>
                         </Form>
                         <div className="button-centralizer">
-                            <Link to="/cartoes" type="button" className="p-text-value mrg-link">Cancelar</Link>
-                            <Link to="/cartoes" type="button" className="p-text-value">Salvar</Link>  
+                            <Link to="/cartoes" type="button" className="p-text-value mrg-link link-option">Cancelar</Link>
+                            <Link to="/cartoes" type="button" className="p-text-value link-option">Salvar</Link>  
                         </div>
                     </div>
                 </Col>

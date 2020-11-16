@@ -53,8 +53,8 @@ export default props =>
                     <div className="options-card">
                         <p className="p-text-title">Ações</p>
                         <div className="flex-line">
-                            <Link to="/cartoes" type="button" className="p-text-value mrg-link">Voltar</Link>
-                            <Link to="/cartoes" type="button" className="p-text-value">Excluir Registro</Link>
+                            <Link to="/cartoes" type="button" className="p-text-value mrg-link link-option">Voltar</Link>
+                            <Link to="/cartoes" type="button" className="p-text-value link-option ">Excluir Registro</Link>
                         </div>
                     </div>
                 </div>
