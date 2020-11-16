@@ -34,7 +34,7 @@ Para executar ou modificar a aplicação em seu local, é necessário ter instal
 
   > yarn start
   
-  Esses comandos irão iniciar o servidor backend rodando na porta 8080. O mesmo contém as APIs que serão usadas na aplicação para acessar o banco.
+  Esses comandos irão iniciar o servidor backend rodando na porta 8080. O mesmo contém as APIs que serão usadas na aplicação para acessar o banco de dados.
   
   --------------------
   Após isso acesse o diretório *"frontend"*.
