@@ -15,7 +15,9 @@ class UsuarioControlador {
             deletar: '/api/usuario/deletar/:id',
             alterarSenha: '/api/usuario/senha/:id',
             mostrarDispositivos: '/api/usuario/:id/dispositivo',
-            mostrarCartoes: '/api/usuario/:id/cartao'
+            mostrarCartoes: '/api/usuario/:id/cartao',
+            login: '/api/usuario/login',
+            mostrarHistorico: '/api/usuario/:id/historico'
         };
     }
 
@@ -117,6 +119,37 @@ class UsuarioControlador {
             usuarioDao.mostrarCartoes(req.params.id)
                 .then(cartoes => {
                     return resp.json({cartoes:cartoes});
+                }).catch(erro => {
+                    resp.status(500).end();
+                    console.log(erro);
+                });
+        };
+    }
+
+    mostrarHistorico() {
+        return function(req, resp) {
+            usuarioDao.mostrarHistorico(req.params.id)
+                .then(historico => {
+                    return resp.json({historico:historico});
+                }).catch(erro => {
+                    resp.status(500).end();
+                    console.log(erro);
+                });
+        };
+    }
+
+    login() {
+        return function(req, resp) {
+            usuarioDao.login(req.body.email)
+                .then(usuario => {
+                    if(usuario == null || usuario == ""){
+                        return resp.json({loged:false, error:"Email não cadastrado"});
+                    }else if(usuario[0].senha == req.body.senha){
+                        return resp.json({loged:true, error:""});
+                    }else{
+                        return resp.json({loged:false, error:"Combinação incorreta de senha e email"});
+                    }
+
                 }).catch(erro => {
                     resp.status(500).end();
                     console.log(erro);

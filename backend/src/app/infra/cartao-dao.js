@@ -5,20 +5,21 @@ class CartaoDao {
     constructor(db) {
         this._db = db;
     }
-
-    adiciona_usuario_cartao(usuario_id, lastId) {
-        console.log(usuario_id);
-        console.log(lastId);
+    
+    adiciona(cartao) {
+        console.log(cartao);
         return new Promise((resolve, reject) => {
             this._db.run(`
-                INSERT INTO usuario_cartao (
-                    usuario, 
-                    cartao
-                ) values (?,?)
+                INSERT INTO cartao (
+                    apelido, 
+                    rfid,
+                    usuario
+                ) values (?,?,?)
                 `,
                 [
-                    usuario_id,
-                    lastId
+                    cartao.apelido,
+                    cartao.rfid,
+                    cartao.usuario_id
                 ],
                 function (err) {
                     if (err) {
@@ -27,31 +28,6 @@ class CartaoDao {
                     }
 
                     resolve();
-                }
-            )
-        });
-    }
-
-    adiciona(cartao) {
-        console.log(cartao);
-        return new Promise((resolve, reject) => {
-            this._db.run(`
-                INSERT INTO cartao (
-                    apelido, 
-                    rfid
-                ) values (?,?)
-                `,
-                [
-                    cartao.apelido,
-                    cartao.rfid
-                ],
-                function (err) {
-                    if (err) {
-                        console.log(err);
-                        return reject('Não foi possível adicionar o cartão!');
-                    }
-
-                    return resolve(this.lastID);
                 }
             )
         });
@@ -87,6 +63,27 @@ class CartaoDao {
                     return resolve(cartao);
                 }
             );
+        });
+    }
+
+    alterarUsuario(cartao) {
+        return new Promise((resolve, reject) => {
+            this._db.run(`
+                UPDATE cartao SET
+                usuario = ?
+                WHERE id = ?
+            `,
+            [
+                cartao.body.usuario_id,
+                cartao.params.id
+            ],
+            erro => {
+                if (erro) {
+                    return reject('Não foi possível atualizar o cartão!');
+                }
+
+                resolve();
+            });
         });
     }
 

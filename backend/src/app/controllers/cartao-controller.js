@@ -12,7 +12,8 @@ class CartaoControlador {
             mostrar: '/api/cartao/:id',
             cadastrar: '/api/cartao/adicionar',
             editar: '/api/cartao/editar/:id',
-            deletar: '/api/cartao/deletar/:id'
+            deletar: '/api/cartao/deletar/:id',
+            alterarUsuario: '/api/cartao/alterarUsuario/:id'
         };
     }
 
@@ -51,14 +52,8 @@ class CartaoControlador {
             }
 
             cartaoDao.adiciona(req.body)
-                .then(lastId => {
-                    cartaoDao.adiciona_usuario_cartao(req.body.usuario_id, lastId)
-                    .then(()=>{
-                        return resp.status(200).end();
-                    }).catch(erro => {
-                        resp.status(500).end()
-                        console.log(erro);
-                    });
+                .then(() => {
+                    return resp.status(200).end();
                 }).catch(erro => {
                     resp.status(500).end()
                     console.log(erro);
@@ -69,6 +64,19 @@ class CartaoControlador {
     edita() {
         return function(req, resp) {
             cartaoDao.atualiza(req)
+                .then(()=>{
+                    return resp.status(200).end();
+                })
+                .catch(erro => {
+                    resp.status(500).end()
+                    console.log(erro);
+                });
+        };
+    }
+
+    alterarUsuario() {
+        return function(req, resp) {
+            cartaoDao.alterarUsuario(req)
                 .then(()=>{
                     return resp.status(200).end();
                 })

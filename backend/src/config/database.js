@@ -25,7 +25,9 @@ const CARTAO_SCHEMA =
 CREATE TABLE IF NOT EXISTS cartao (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     apelido VARCHAR(255) NOT NULL, 
-    rfid VARCHAR(255) NOT NULL
+    rfid VARCHAR(255) NOT NULL UNIQUE,
+    usuario VARCHAR(255) NULL,
+    FOREIGN KEY(usuario) REFERENCES usuario(id) ON DELETE CASCADE
 )
 `;
 
@@ -33,7 +35,9 @@ const DISPOSTIVO_SCHEMA =
 `
 CREATE TABLE IF NOT EXISTS dispositivo (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    apelido VARCHAR(255) NOT NULL
+    apelido VARCHAR(255) NOT NULL,
+    usuario VARCHAR(255) NULL,
+    FOREIGN KEY(usuario) REFERENCES usuario(id) ON DELETE CASCADE
 )
 `;
 
@@ -49,15 +53,6 @@ CREATE TABLE IF NOT EXISTS historico(
 )
 `;
 
-const USUARIO_CARTAO_SCHEMA = `
-CREATE TABLE IF NOT EXISTS usuario_cartao (
-    id INTEGER PRIMARY KEY AUTOINCREMENT, 
-    usuario INTEGER NOT NULL,
-    cartao INTEGER NOT NULL,
-    FOREIGN KEY(usuario) REFERENCES usuario(id) ON DELETE CASCADE,
-    FOREIGN KEY(cartao) REFERENCES cartao(id) ON DELETE CASCADE
-)
-`;
 
 const CARTAO_DISPOSITIVO_SCHEMA = `
 CREATE TABLE IF NOT EXISTS cartao_dispositivo(
@@ -70,16 +65,6 @@ CREATE TABLE IF NOT EXISTS cartao_dispositivo(
 )
 `;
 
-const USUARIO_DISPOSITIVO_SCHEMA = `
-CREATE TABLE IF NOT EXISTS usuario_dispositivo (
-    id INTEGER PRIMARY KEY AUTOINCREMENT, 
-    dispositivo INTEGER NOT NULL,
-    usuario INTEGER NOT NULL,
-    FOREIGN KEY(dispositivo) REFERENCES dispositivo(id) ON DELETE CASCADE,
-    FOREIGN KEY(usuario) REFERENCES usuario(id) ON DELETE CASCADE
-)
-`;
-
 bd.serialize(() => {
     bd.run("PRAGMA foreign_keys=ON");
     bd.run(USUARIOS_SCHEMA);
@@ -87,15 +72,8 @@ bd.serialize(() => {
     bd.run(HISTORICO_SCHEMA);
     bd.run(INSERIR_USUARIO_1);
     bd.run(CARTAO_SCHEMA);
-    bd.run(USUARIO_CARTAO_SCHEMA );
     bd.run(CARTAO_DISPOSITIVO_SCHEMA );
-    bd.run(USUARIO_DISPOSITIVO_SCHEMA);
-    bd.each(
-        `SELECT cartao.id as "id", cartao.apelido as "apelido", cartao.rfid as "rfid"
-    FROM usuario
-    INNER JOIN usuario_cartao on usuario.id = usuario_cartao.usuario
-    INNER JOIN cartao on usuario_cartao.cartao = cartao.id
-    WHERE usuario.id = 1`, (err, usuario) => {
+    bd.each("SELECT * FROM cartao_dispositivo", (err, usuario) => {
         console.log('Usuario: ');
         console.log(usuario);
     });

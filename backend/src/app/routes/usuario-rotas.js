@@ -13,4 +13,6 @@ module.exports = (app) => {
     app.post(rotasUsuario.alterarSenha, usuarioControlador.alterarSenha());
     app.get(rotasUsuario.mostrarDispositivos, usuarioControlador.mostrarDispositivos());
     app.get(rotasUsuario.mostrarCartoes, usuarioControlador.mostrarCartoes());
+    app.post(rotasUsuario.login, usuarioControlador.login());
+    app.get(rotasUsuario.mostrarHistorico, usuarioControlador.mostrarHistorico());
 };
