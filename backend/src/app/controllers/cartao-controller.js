@@ -1,4 +1,4 @@
-const { validationResult } = require('express-validator/check');
+const { check, validationResult } = require('express-validator/check');
 
 const CartaoDao = require('../infra/cartao-dao');
 const db = require('../../config/database');
@@ -64,6 +64,12 @@ class CartaoControlador {
 
     edita() {
         return function(req, resp) {
+
+            const erros = validationResult(req);
+            if (!erros.isEmpty()) {
+                return resp.json(erros.array());
+            }
+            
             cartaoDao.atualiza(req)
                 .then(()=>{
                     return resp.status(200).end();

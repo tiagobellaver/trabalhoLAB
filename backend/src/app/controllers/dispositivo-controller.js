@@ -1,4 +1,4 @@
-const { validationResult } = require('express-validator/check');
+const { check, validationResult } = require('express-validator/check');
 
 const DispostivoDao = require('../infra/dispositivo-dao');
 const db = require('../../config/database');
@@ -67,6 +67,10 @@ class DispositivoControlador {
 
     edita() {
         return function(req, resp) {
+            const erros = validationResult(req);
+            if (!erros.isEmpty()) {
+                return resp.json(erros.array());
+            }
             dispostivoDao.atualiza(req)
                 .then(()=>{
                     return resp.status(200).end();
