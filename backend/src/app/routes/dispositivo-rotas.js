@@ -14,4 +14,5 @@ module.exports = (app) => {
     app.post(rotasDispositivo.adicionarCartao, dispositivoControlador.adicionarCartao());
     app.put(rotasDispositivo.setarAutorizacao, dispositivoControlador.setarAutorizacao());
     app.delete(rotasDispositivo.removerCartao, dispositivoControlador.removerCartao());
+    app.get(rotasDispositivo.mostrarHistorico, dispositivoControlador.mostrarHistorico());
 };

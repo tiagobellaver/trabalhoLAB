@@ -16,7 +16,8 @@ class DispositivoControlador {
             adicionarCartao: '/api/adicionarCartao',
             removerCartao: '/api/removerCartao',
             setarAutorizacao: '/api/setarAutorizacao',
-            mostrarCartoes: '/api/dispositivo/cartao/:id',
+            mostrarCartoes: '/api/dispositivo/:id/cartao',
+            mostrarHistorico: '/api/dispositivo/:id/historico'
         };
     }
 
@@ -131,6 +132,17 @@ class DispositivoControlador {
             dispostivoDao.mostrarCartoes(req.params.id)
                 .then(cartoes => {
                     return resp.json({cartoes:cartoes});
+                }).catch(erro => {
+                    resp.status(500).end();
+                    console.log(erro);
+                });
+        };
+    }
+    mostrarHistorico() {
+        return function(req, resp) {
+            dispostivoDao.mostrarHistorico(req.params.id)
+                .then(historico => {
+                    return resp.json({historico:historico});
                 }).catch(erro => {
                     resp.status(500).end();
                     console.log(erro);
