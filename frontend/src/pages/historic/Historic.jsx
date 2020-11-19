@@ -3,32 +3,25 @@ import { Container, Row, Col, Table } from 'reactstrap';
 import './Historic.css';
 import Navbar from '../../components/Navbar/Navbar';
 import { Link } from 'react-router-dom'
-
 import ApiService from '../../utils/ApiService';
 
 class Historic extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            historico: []
-        };
-    }
-
+    state = {
+        historicos: [],
+    };
     componentDidMount() {
-        ApiService.ListHistorico()
+        ApiService.ListaHistorico()
         .then(res => ApiService.TrataErros(res))
-        .then(res => {
-            if(res.message === 'success') {
-                this.setState({historico: [...this.state.historico, ...res.data]});
-            }
+        .then(res => { 
             console.log(res)
-        })
+            this.setState({historicos: res.historicos}); 
+        }).catch(err => console.log(err));
+
     }
-
+     
 render() {
-
+    const { historicos } = this.state;
     return(
     <>
     <Container fluid>
@@ -51,15 +44,17 @@ render() {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>{this.state.id}</td>
-                                <td>{this.state.apelido}</td>
-                                <td>{this.state.data}</td>
-                                <td>{this.state.status}</td>
-                                <td>
-                                    <Link to="/historico-detalhe" type="button" className="link-option">Detalhes</Link>
-                                </td>
-                            </tr>
+                            {historicos.map(historico => (
+                                 <tr  key={historico.id}>
+                                    <td>{historico.id}</td>
+                                    <td>a</td>
+                                    <td>{historico.date}</td>
+                                    <td>{historico.autorizado}</td>
+                                    <td>
+                                        <Link to="/historico-detalhe" type="button" className="link-option">Detalhes</Link>
+                                    </td>
+                                 </tr>
+                            ))}
                         </tbody>
                     </Table>
                 </Col>

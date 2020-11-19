@@ -1,7 +1,7 @@
 const ApiService = {
 
-    ListHistorico : () =>{
-        return fetch('https://localhost:8080/api/historicos')
+    ListaHistorico : () =>{
+        return fetch('http://localhost:8080/api/historicos')
         
     },
     TrataErros: res => {
