@@ -18,13 +18,30 @@ export default props =>
                     <Table>
                         <thead>
                             <tr>
-                                <th>HISTÓRICO</th>
                                 <th>CARTÕES</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
+                                <td>Tiago</td>
+                                <td>Ativo</td>
+                            </tr>
+                        </tbody>
+                    </Table>
+                    
+                    <Table>
+                        <thead>
+                            <tr>
+                                <th>HISTÓRICO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Tiago</td>
+                                <td>18/11/2020 às 19:00</td>
+                                <td>Autorizado</td>
                                 <td>Teste</td>
                             </tr>
                         </tbody>
