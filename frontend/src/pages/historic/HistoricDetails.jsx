@@ -1,5 +1,5 @@
 import React  from 'react';
-import {Container, Row, Col, Form, Label, FormGroup, Input  } from 'reactstrap';
+import {Container, Row, Col} from 'reactstrap';
 import './Historic.css';
 import { Link } from 'react-router-dom'
 import Navbar from '../../components/Navbar/Navbar';

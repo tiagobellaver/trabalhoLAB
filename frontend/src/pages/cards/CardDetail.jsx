@@ -1,6 +1,6 @@
 import React  from 'react';
 import { Link } from 'react-router-dom'
-import {Container, Row, Col, CardImg } from 'reactstrap';
+import {Container, Row, Col } from 'reactstrap';
 import Navbar from '../../components/Navbar/Navbar';
 import { Image } from 'react-bootstrap';
 export default props =>

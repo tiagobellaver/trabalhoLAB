@@ -4,7 +4,6 @@ import './Historic.css';
 import Navbar from '../../components/Navbar/Navbar';
 import { Link } from 'react-router-dom'
 
-import api from '../../utils/ApiService';
 import ApiService from '../../utils/ApiService';
 
 class Historic extends Component {
@@ -29,12 +28,6 @@ class Historic extends Component {
     }
 
 render() {
-    const campos = [{
-        id: 'id',
-        apelido: '',
-        data: 'date',
-        status: 'autorizado'
-    }]
 
     return(
     <>
