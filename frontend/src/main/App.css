@@ -77,6 +77,15 @@
     min-height: 785px;
 }
 
+.content-container-c {
+    margin-top: 60px;
+    margin-left: 120px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: #E3F2FD;
+    min-height: 785px;
+}
+
 .table td, .table th {
     text-align: center;
 }

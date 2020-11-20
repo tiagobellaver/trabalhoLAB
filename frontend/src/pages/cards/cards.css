@@ -1,0 +1,21 @@
+.new-card {
+    background-color: white;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    color: #3066BE;
+    border: 2px solid #3066BE;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    outline: none;
+}
+
+.new-card:hover{
+    color:white;
+    background-color: #3066BE;
+    outline: none;
+}
+
+.new-card:focus {
+    outline: none;
+}

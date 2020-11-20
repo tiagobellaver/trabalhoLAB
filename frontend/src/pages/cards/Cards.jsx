@@ -1,10 +1,21 @@
-import React  from 'react';
+import React, { Component }  from 'react';
 import { Container, Row, Col  } from 'reactstrap';
-import { Link } from 'react-router-dom'
 import Navbar from '../../components/Navbar/Navbar';
 
-export default props =>
-<>
+import './cards.css';
+
+import NewCard from '../../components/NewCard/NewCard';
+import Card from '../../components/Card/Card';
+
+class Cards extends Component {
+
+    state = {
+        cards: []
+    };
+
+    render() {
+        return(
+        <>
     <Container fluid>
         <Row>
             <Col sm={2} md={2} lg={2} className="p-0 nav">
@@ -13,12 +24,14 @@ export default props =>
             <Col sm={10} md={10} lg={10} className="p-0 main-context">
                 <h1 className="title-page">Cartões</h1>
                 <hr className="title-line"/>
-                <Col sm={10} md={10} lg={10} className="content-container">
-                <Link to="/cartao-detalhe" type="button" className="link-option">Detalhes</Link>
-                <Link to="/cadastrar-cartao" type="button" className="link-option">Novo cartão</Link>
-                <Link to="/alterar-cartao" type="button" className="link-option">Edição cartão</Link>
-                </Col>
+                <NewCard />
+                
             </Col>
         </Row>
     </Container>
 </>
+        );
+    }
+}
+
+export default Cards;
