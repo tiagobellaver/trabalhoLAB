@@ -1,11 +1,30 @@
-import React  from 'react';
+import React ,{ Component}   from 'react';
 import { Link } from 'react-router-dom'
 import {Container, Row, Col } from 'reactstrap';
 import Navbar from '../../components/Navbar/Navbar';
 import { Image } from 'react-bootstrap';
-export default props =>
-<>
-<Container fluid>
+
+import ApiService from '../../utils/ApiService';
+
+class cardDetails extends Component {
+    state = {
+        usuarios: [],
+    };
+    componentDidMount() {
+        ApiService.ListaUsuarios()
+        .then(res => ApiService.TrataErros(res))
+        .then(res => { 
+            console.log(res)
+            this.setState({usuarios: res.usuarios}); 
+        }).catch(err => console.log(err));
+
+    }
+        
+render() {
+    const { usuarios } = this.state;
+    return(
+    <>
+   <Container fluid>
         <Row>
             <Col sm={2} md={2} className="p-0 nav">
                 <Navbar />
@@ -61,4 +80,8 @@ export default props =>
             </Col>
         </Row>
     </Container>
-</>
+    </>
+    );
+}
+}
+export default cardDetails;

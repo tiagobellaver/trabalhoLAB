@@ -4,6 +4,11 @@ const ApiService = {
         return fetch('http://localhost:8080/api/historicos')
         
     },
+    
+    ListaUsuarios : () =>{
+        return fetch('http://localhost:8080/api/usuarios')
+        
+    },
     TrataErros: res => {
         if(!res.ok){
             throw Error(res.responseText)
