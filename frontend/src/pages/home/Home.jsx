@@ -1,10 +1,38 @@
-import React  from 'react';
+import React, { Component }  from 'react';
 import { Container, Row, Col, Table  } from 'reactstrap';
 
 import Navbar from '../../components/Navbar/Navbar';
 import './home.css';
 
-export default props =>
+import ApiService from '../../utils/ApiService';
+
+class Home extends Component{
+
+    state = {
+        historicos: [],
+        cartoes: [],
+    };
+
+    componentDidMount() {
+        ApiService.ListaCartoes()
+        .then(res => ApiService.TrataErros(res))
+        .then(res => {
+            console.log(res)
+            this.setState({cartoes: res.cartoes});
+        }).catch(err => console.log(err));
+
+        ApiService.ListaHistorico()
+        .then(res => ApiService.TrataErros(res))
+        .then(res => { 
+            console.log(res)
+            this.setState({historicos: res.historicos}); 
+        }).catch(err => console.log(err));
+    }
+
+render() {
+    const { historicos } = this.state;
+    const { cartoes } = this.state;
+    return(
 <>
     <Container fluid>
         <Row>
@@ -14,7 +42,8 @@ export default props =>
             <Col sm={10} md={10} lg={10} className="p-0 main-context">
                 <h1 className="title-page">Dashboard</h1>
                 <hr className="title-line"/>
-                <Col sm={10} md={10} lg={10} className="content-container">
+                <Col sm={10} md={10} lg={10} className="content-container d-flex">
+                    <Col sm={6} md={6} lg={6}>
                     <Table>
                         <thead>
                             <tr>
@@ -22,14 +51,17 @@ export default props =>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            {cartoes.map(cartao => (
+                            <tr key={cartao.id}>
+                                <td>{cartao.id}</td>
+                                <td>{cartao.apelido}</td>
                                 <td>1</td>
-                                <td>Tiago</td>
-                                <td>Ativo</td>
                             </tr>
+                            ))}
                         </tbody>
                     </Table>
-                    
+                    </Col>
+                    <Col sm={6} md={6} lg={6}>
                     <Table>
                         <thead>
                             <tr>
@@ -37,17 +69,23 @@ export default props =>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Tiago</td>
-                                <td>18/11/2020 às 19:00</td>
-                                <td>Autorizado</td>
-                                <td>Teste</td>
-                            </tr>
+                        {historicos.map(historico => (
+                                 <tr  key={historico.id}>
+                                    <td>{historico.id}</td>
+                                    <td>a</td>
+                                    <td>{historico.date}</td>
+                                    <td>{historico.autorizado}</td>
+                                 </tr>
+                            ))}
                         </tbody>
                     </Table>
+                    </Col>
                 </Col>
             </Col>
         </Row>
     </Container>
 </>
+    );
+}
+}
+export default Home;

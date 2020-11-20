@@ -76,3 +76,105 @@
     background-color: white;
     min-height: 785px;
 }
+
+.table td, .table th {
+    text-align: center;
+}
+
+th {
+    color:  #3066BE;
+    font-size: 15px;
+    font-weight: 700;
+}
+td {
+    font-weight: 600;
+    color: #000000;
+    font-size: 15px;
+}
+
+.link-option, .link-option-del {
+    color: #000000;
+    text-decoration: none !important;
+}
+
+.link-option {
+    margin-right: 10px;
+}
+
+.link-option:hover {
+    color: #3066BE;
+}
+
+.link-option-del:hover {
+    color: #D81159;
+}
+
+
+/* revisar */
+
+.padd-dash {
+    padding: 20px 30px;
+}
+
+.p-text-title {
+    font-weight: 600;
+    color: #3066BE;
+    font-size: 14px;
+}
+
+.p-text-value {
+    font-weight: 600;
+    color: #000000;
+    font-size: 14px;
+}
+
+.flex-line {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.mrg-link {
+    margin-right: 20px;
+}
+
+.user-details {
+    padding: 15px 0 5px;
+}
+
+.access-card {
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 6px;
+}
+
+.access-card .p-text-title {
+    margin-right: 6px;
+}
+
+.user-card-list {
+    list-style: none;
+    padding: 0;
+}
+
+.user-card-list .card-item {
+    margin-bottom: 15px;
+}
+
+.user-card-list .card-item:last-child {
+    margin-bottom: 0;
+}
+
+.options-card {
+    border-top: 1px solid #cccccc;
+    padding-top: 6px;
+}
+
+.card-create-padding {
+    padding-top: 100px;
+}
+
+.button-centralizer {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
