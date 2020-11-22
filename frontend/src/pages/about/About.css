@@ -1,0 +1,21 @@
+.title-about {
+    padding-top: 15px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sub-about {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.text-about {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.text-about a {
+    color: black;
+    text-decoration: none;
+}

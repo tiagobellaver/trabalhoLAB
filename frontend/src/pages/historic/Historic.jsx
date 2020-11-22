@@ -1,11 +1,29 @@
-import React  from 'react';
+import React, { Component} from 'react';
 import { Container, Row, Col, Table } from 'reactstrap';
 import './Historic.css';
 import Navbar from '../../components/Navbar/Navbar';
 import { Link } from 'react-router-dom'
+import ApiService from '../../utils/ApiService';
 
-export default props =>
-<>
+class Historic extends Component {
+
+    state = {
+        historicos: [],
+    };
+    componentDidMount() {
+        ApiService.ListaHistorico()
+        .then(res => ApiService.TrataErros(res))
+        .then(res => { 
+            console.log(res)
+            this.setState({historicos: res.historicos}); 
+        }).catch(err => console.log(err));
+
+    }
+     
+render() {
+    const { historicos } = this.state;
+    return(
+    <>
     <Container fluid>
         <Row>
             <Col sm={2} md={2} lg={2} className="p-0 nav">
@@ -26,20 +44,25 @@ export default props =>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Teste</td>
-                                <td>testinho</td>
-                                <td>testando</td>
-                                <td>
-                                    <Link to="/historico-detalhe" type="button" className="link-option">Detalhes</Link>
-                                    <Link to="/historico-detalhe" type="button" className="link-option-del">Excluir Registro</Link>
-                                </td>
-                            </tr>
+                            {historicos.map(historico => (
+                                 <tr  key={historico.id}>
+                                    <td>{historico.id}</td>
+                                    <td>a</td>
+                                    <td>{historico.date}</td>
+                                    <td>{historico.autorizado}</td>
+                                    <td>
+                                        <Link to="/historico-detalhe" type="button" className="link-option">Detalhes</Link>
+                                    </td>
+                                 </tr>
+                            ))}
                         </tbody>
                     </Table>
                 </Col>
             </Col>
         </Row>
     </Container>
-</>
+    </>
+    );
+}
+}
+export default Historic;

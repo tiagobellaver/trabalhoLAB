@@ -62,8 +62,8 @@ class HistoricoController {
     historicos() {
         return function(req, resp) {
             historicoDao.lista()
-                    .then(dispositivos => {
-                        return resp.json({dispositivos:dispositivos});
+                    .then(historicos => {
+                        return resp.json({historicos:historicos});
                     })
                     .catch(erro => {
                         resp.status(500).end();
