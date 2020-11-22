@@ -76,7 +76,7 @@ export default props =>
                                     <Col>
                                         <FormGroup>
                                             <Label  className="p-text-title" for="photograph" >Foto</Label>
-                                            <Input type="text" id="photograph"/>
+                                            <Input type="file" id="photograph"/>
                                         </FormGroup>
                                     </Col>
                                 </Row>
