@@ -23,7 +23,18 @@
     margin-right: 10px;
 }
 
-.login-form :focus {
+.form-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-field {
+    width: 100%;
+    height: 40px;
+}
+
+.form-field:focus {
     border: 1px solid #3066BE;
 }
 
@@ -38,13 +49,26 @@
     padding: 7px 49px;
     background: white;
     margin-bottom: 50px;
+    outline: none;
 }
 
 .login-button:hover {
     color: white;
     background-color: #3066BE;
+    outline: none;
+}
+
+.login-button:focus {
+    outline: none;
 }
 
 .login-button:link {
     text-decoration: none;
+    outline: none;
+}
+
+.form-error {
+    color: #FF0000;
+    margin-left: 45px;
+    font-size: 14px;
 }
