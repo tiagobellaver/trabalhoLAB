@@ -14,7 +14,9 @@
     "express": "^4.17.1",
     "express-validator": "^5.3.1",
     "method-override": "^3.0.0",
-    "sqlite3": "^4.0.2"
+    "serialport": "^9.0.2",
+    "sqlite3": "^4.0.2",
+    "vps-rest-client": "^1.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.4"
