@@ -1,4 +1,4 @@
-const { validationResult } = require('express-validator/check');
+const { check, validationResult } = require('express-validator/check');
 
 const CartaoDao = require('../infra/cartao-dao');
 const db = require('../../config/database');
@@ -51,8 +51,9 @@ class CartaoControlador {
                 return resp.json(erros.array());
             }
 
-            cartaoDao.adiciona(req.body)
-                .then(() => {
+            cartaoDao.adiciona(req.body.apelido, req.body.rfid, req.body.usuario_id)
+                .then(lastId => {
+                    console.log(lastId);
                     return resp.status(200).end();
                 }).catch(erro => {
                     resp.status(500).end()
@@ -63,6 +64,12 @@ class CartaoControlador {
 
     edita() {
         return function(req, resp) {
+
+            const erros = validationResult(req);
+            if (!erros.isEmpty()) {
+                return resp.json(erros.array());
+            }
+            
             cartaoDao.atualiza(req)
                 .then(()=>{
                     return resp.status(200).end();

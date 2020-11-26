@@ -1,4 +1,4 @@
-const { validationResult } = require('express-validator/check');
+const { check, validationResult } = require('express-validator/check');
 
 const DispostivoDao = require('../infra/dispositivo-dao');
 const db = require('../../config/database');
@@ -16,7 +16,8 @@ class DispositivoControlador {
             adicionarCartao: '/api/adicionarCartao',
             removerCartao: '/api/removerCartao',
             setarAutorizacao: '/api/setarAutorizacao',
-            mostrarCartoes: '/api/dispositivo/cartao/:id',
+            mostrarCartoes: '/api/dispositivo/:id/cartao',
+            mostrarHistorico: '/api/dispositivo/:id/historico'
         };
     }
 
@@ -66,6 +67,10 @@ class DispositivoControlador {
 
     edita() {
         return function(req, resp) {
+            const erros = validationResult(req);
+            if (!erros.isEmpty()) {
+                return resp.json(erros.array());
+            }
             dispostivoDao.atualiza(req)
                 .then(()=>{
                     return resp.status(200).end();
@@ -131,6 +136,17 @@ class DispositivoControlador {
             dispostivoDao.mostrarCartoes(req.params.id)
                 .then(cartoes => {
                     return resp.json({cartoes:cartoes});
+                }).catch(erro => {
+                    resp.status(500).end();
+                    console.log(erro);
+                });
+        };
+    }
+    mostrarHistorico() {
+        return function(req, resp) {
+            dispostivoDao.mostrarHistorico(req.params.id)
+                .then(historico => {
+                    return resp.json({historico:historico});
                 }).catch(erro => {
                     resp.status(500).end();
                     console.log(erro);

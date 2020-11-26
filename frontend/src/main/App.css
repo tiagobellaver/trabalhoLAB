@@ -4,7 +4,6 @@
 
 .main-context {
     background-color: #E3F2FD;
-    height: 100vh;
 }
 
 .nav-title {
@@ -16,6 +15,7 @@
     text-transform: uppercase;
     line-height: 26px;
     letter-spacing: 0.30rem;
+    margin-bottom: 20px;
 }
 
 .navbar-left {
@@ -27,7 +27,7 @@
     align-items: center;
     margin-bottom: 15px;
     color: white;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 700;
     line-height: 26px;
 }
@@ -40,6 +40,7 @@
     color: white;
 }
 
+
 .navbar-left img {
     margin-left: 20px;
     margin-right: 10px;
@@ -48,7 +49,7 @@
 .title-page {
     margin-top: 62px;
     text-transform: uppercase;
-    font-size: 40px;
+    font-size: 25px;
     font-weight: 700;
     margin-left: 39px;
 }
@@ -56,8 +57,15 @@
 .title-line {
     margin: 0;
     float: left;
-    width: 20%;
+    width: 15%;
     border: 1px solid #D81159;
+}
+
+.second-title-line{
+    margin: 0;
+    width: 100%;
+    border: 1px solid #d3d3d3;
+    margin-bottom: 30px;
 }
 
 .content-container {
@@ -65,6 +73,117 @@
     margin-left: 120px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-    height: 81vh;
     background-color: white;
+    min-height: 785px;
+}
+
+.content-container-c {
+    margin-top: 60px;
+    margin-left: 80px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: #E3F2FD;
+    min-height: 785px;
+}
+
+.table td, .table th {
+    text-align: center;
+}
+
+th {
+    color:  #3066BE;
+    font-size: 15px;
+    font-weight: 700;
+}
+td {
+    font-weight: 600;
+    color: #000000;
+    font-size: 15px;
+}
+
+.link-option, .link-option-del {
+    color: #000000;
+    text-decoration: none !important;
+}
+
+.link-option {
+    margin-right: 10px;
+}
+
+.link-option:hover {
+    color: #3066BE;
+}
+
+.link-option-del:hover {
+    color: #D81159;
+}
+
+
+/* revisar */
+
+.padd-dash {
+    padding: 20px 30px;
+}
+
+.p-text-title {
+    font-weight: 600;
+    color: #3066BE;
+    font-size: 14px;
+}
+
+.p-text-value {
+    font-weight: 600;
+    color: #000000;
+    font-size: 14px;
+}
+
+.flex-line {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.mrg-link {
+    margin-right: 20px;
+}
+
+.user-details {
+    padding: 15px 0 5px;
+}
+
+.access-card {
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 6px;
+}
+
+.access-card .p-text-title {
+    margin-right: 6px;
+}
+
+.user-card-list {
+    list-style: none;
+    padding: 0;
+}
+
+.user-card-list .card-item {
+    margin-bottom: 15px;
+}
+
+.user-card-list .card-item:last-child {
+    margin-bottom: 0;
+}
+
+.options-card {
+    border-top: 1px solid #cccccc;
+    padding-top: 6px;
+}
+
+.card-create-padding {
+    padding-top: 100px;
+}
+
+.button-centralizer {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
 }

@@ -1,4 +1,4 @@
-const { validationResult } = require('express-validator/check');
+const { check, validationResult } = require('express-validator/check');
 
 const UsuarioDao = require('../infra/usuario-dao');
 const db = require('../../config/database');
@@ -51,7 +51,6 @@ class UsuarioControlador {
         return function(req, resp) {
           
             const erros = validationResult(req);
-    
             if (!erros.isEmpty()) {
                 return resp.json(erros.array());
             }
@@ -68,6 +67,10 @@ class UsuarioControlador {
 
     edita() {
         return function(req, resp) {
+            const erros = validationResult(req);
+            if (!erros.isEmpty()) {
+                return resp.json(erros.array());
+            }
             usuarioDao.atualiza(req)
                 .then(()=>{
                     return resp.status(200).end();
@@ -93,6 +96,12 @@ class UsuarioControlador {
 
     alterarSenha() {
         return function(req, resp) {
+
+            const erros = validationResult(req);
+            if (!erros.isEmpty()) {
+                return resp.json(erros.array());
+            }
+
             usuarioDao.alterarSenha(req)
                 .then(() => resp.status(200).end())
                 .catch(erro => {
@@ -140,6 +149,10 @@ class UsuarioControlador {
 
     login() {
         return function(req, resp) {
+            const erros = validationResult(req);
+            if (!erros.isEmpty()) {
+                return resp.json(erros.array());
+            }
             usuarioDao.login(req.body.email)
                 .then(usuario => {
                     if(usuario == null || usuario == ""){
