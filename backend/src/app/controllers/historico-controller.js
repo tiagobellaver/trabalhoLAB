@@ -1,14 +1,17 @@
 const { validationResult } = require('express-validator/check');
 const HistoricoDao = require('../infra/historico-dao');
+const CartaoDao = require('../infra/cartao-dao');
 const db = require('../../config/database');
 const historicoDao = new HistoricoDao(db);
+const cartaoDao = new CartaoDao(db);
 
 class HistoricoController {
 
     static rotas() {
         return {
             requisicao: '/api/historico/requisicao',
-            historicos: '/api/historicos'
+            historicos: '/api/historicos',
+            mostrarDetalhes: '/api/historico/:id'
         };
     }
 
@@ -57,11 +60,24 @@ class HistoricoController {
     historicos() {
         return function(req, resp) {
             historicoDao.lista()
-                    .then(dispostivos => {
-                        return resp.json({dispostivos:dispostivos});
+                    .then(historicos => {
+                        return resp.json({historicos:historicos});
                     })
                     .catch(erro => {
                         resp.status(500).end();
+                        console.log(erro);
+                    });
+        };
+    }
+
+    mostrarDetalhes() {
+        return function(req, resp) {
+            historicoDao.buscaPorId(req.params.id)
+                    .then( historico => {
+                        return resp.json({historico:historico});
+                    })
+                    .catch(erro => {
+                        resp.status(500).end()
                         console.log(erro);
                     });
         };

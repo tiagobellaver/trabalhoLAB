@@ -18,8 +18,8 @@ class HistoricoDao {
             )
         });
     }
-    buscaPorId(id) {
 
+    buscaPorId(id) {
         return new Promise((resolve, reject) => {
             this._db.get(
                 `
