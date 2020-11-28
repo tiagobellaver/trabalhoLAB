@@ -18,8 +18,12 @@ app.use(methodOverride(function (req, res) {
 }));
 
 app.use(express.json());
+
 const rotas = require('../app/routes/routes');
 rotas(app);
+
+const arduino = require('../arduino/arduino');
+arduino();
 
 app.use(function (req, resp, next) {
     return resp.status(404).end();

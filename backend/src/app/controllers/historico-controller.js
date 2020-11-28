@@ -17,13 +17,13 @@ class HistoricoController {
 
     requisicao() {
         return function(req, resp) {
-            console.log(req.body);
             cartaoDao.buscaPorRfid(req.body.rfid)
                 .then(cartao => {
                     if(cartao == null || cartao == ""){
                         cartaoDao.adiciona("Cartão não registrado", req.body.rfid, null)
                             .then(cartaoId =>{
                                 historicoDao.gravarHistorico(cartaoId, req.body.dispositivo, 0);
+                                historicoDao.adicionarCartao(cartaoId, req.body.dispositivo, 0);
                                 return resp.json({autorizado:false});
                             }).catch(erro => {
                                 resp.status(500).end();
@@ -32,8 +32,6 @@ class HistoricoController {
                     }else{
                         historicoDao.verificarAutorizado(req.body.rfid, req.body.dispositivo)
                             .then(autorizado =>{
-                                console.log(autorizado);
-                                console.log(cartao);
                                 var aut_bool = false;
                                 var aut_num = 0;
                                 if(autorizado == null || autorizado == ""){

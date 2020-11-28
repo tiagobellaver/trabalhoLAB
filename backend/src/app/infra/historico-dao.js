@@ -20,7 +20,6 @@ class HistoricoDao {
     }
 
     buscaPorId(id) {
-
         return new Promise((resolve, reject) => {
             this._db.get(
                 `
@@ -87,6 +86,31 @@ class HistoricoDao {
         });
     }
 
+    adicionarCartao(cartao, dispositivo, autorizado) {
+        return new Promise((resolve, reject) => {
+            this._db.run(`
+                INSERT INTO cartao_dispositivo (
+                    dispositivo, 
+                    cartao,
+                    autorizado
+                ) values (?,?,?)
+                `,
+                [
+                    dispositivo,
+                    cartao,
+                    autorizado
+                ],
+                function (err) {
+                    if (err) {
+                        console.log(err);
+                        return reject('Não foi possível adicionar o cartão a este dispositivo!');
+                    }
+
+                    resolve();
+                }
+            )
+        });
+    }
 }
 
 module.exports = HistoricoDao;
