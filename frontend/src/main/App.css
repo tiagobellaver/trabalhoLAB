@@ -191,3 +191,8 @@ td {
 .forms-disp {
     display: block !important;
 }
+
+.new-user-button {
+    margin: 30px 30px 10px 0;
+    
+}
