@@ -6,7 +6,7 @@ class NewCard extends Component {
 
     render() {
         return(
-            <Col sm={10} md={10} lg={10} className="content-container-c" style={{textAlign: 'end'}}>
+            <Col sm={10} md={10} lg={10} style={{marginTop: '30px', marginBottom:'30px'}}>
                 <Link to="/cadastrar-cartao"><button className="new-card">+ Novo Cartão</button></Link>
             </Col>
         );

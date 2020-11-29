@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Router } from 'react-router-dom';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { history } from '../history';
 
 
@@ -15,10 +15,10 @@ import About from '../pages/about/About';
 import PrivateRoute from './PrivateRoute';
 
 const Routes = () => (
-    <Router history={history}>
+    <BrowserRouter history={history}>
         <Switch>
             <Route exact path='/login' component={Login} />
-            <PrivateRoute exact path='/home' component={Home} />
+            <PrivateRoute exact path='/' component={Home} />
             <PrivateRoute exact path='/cartoes' component={Cards} />
             <PrivateRoute exact path='/cartao-detalhe' component={CardsDetail} />
             <PrivateRoute exact path='/historico' component={Historic} />
@@ -27,7 +27,7 @@ const Routes = () => (
             <PrivateRoute exact path='/alterar-cartao' component={UserAlter} />
             <PrivateRoute exact path='/sobre' component={About} />
         </Switch>
-    </Router>
+    </BrowserRouter>
 )
 
 export default Routes;

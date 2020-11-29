@@ -42,7 +42,7 @@ class Cards extends Component {
                             <hr className="title-line"/>
 
                             <Col sm={10} md={10} lg={10} className="content-container-c">
-
+                                    <NewCard/>
                                 <Col className="d-flex justify-content-between">
                                     {cartoes.map(cartao => (
                                         <Card key={cartao.id}/>

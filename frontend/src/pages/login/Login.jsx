@@ -1,7 +1,7 @@
 import React  from 'react';
 import { Container, Row, Col, Label } from 'reactstrap';
 import { Image } from 'react-bootstrap';
-import { ErrorMessage, Formik, Form, Field, yupToFormErrors} from 'formik';
+import { ErrorMessage, Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
 import { history } from '../../history';
@@ -21,7 +21,7 @@ const Login = () => {
             const { data } = resp
             if(data) {
                 localStorage.setItem('app-token', data)
-                history.push('/home')
+                history.push('/')
             }
         })
     }
@@ -41,13 +41,13 @@ const Login = () => {
                                 <Label className="label-login">Login</Label>
                                 <ErrorMessage component="span" name="email" className="form-error"></ErrorMessage>
                                 <div className="form-group">
-                                    <img src={User} />
+                                    <img src={User} alt="user-icon" />
                                     <Field name="email" type="text" className="form-field"/>
                                 </div>
                                     
                                 <ErrorMessage component="span" name="password" className="form-error"></ErrorMessage>
                                 <div className="form-group">
-                                    <img src={Password}/>
+                                    <img src={Password} alt="password-icon" />
                                     <Field name="password" type="password" className="form-field"/>
                                 </div>
                                    
