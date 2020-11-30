@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { history } from '../history';
 
+import User from '../pages/user/User';
 
 import Login from '../pages/login/Login';
 
@@ -15,10 +16,10 @@ import CardAlter from '../pages/cards/CardAlter';
 import Historic from '../pages/historic/Historic';
 import HistoricDetail from '../pages/historic/HistoricDetails';
 
-import User from '../pages/user/User';
-import UserDetail from '../pages/user/UserDetail';
-import UserCreate from '../pages/user/UserCreate';
-import UserAlter from '../pages/user/UserAlter';
+import Dispositivo from '../pages/dispositivo/Dispositivo';
+import DispositivoDetail from '../pages/dispositivo/DispositivoDetail';
+import DispositivoCreate from '../pages/dispositivo/DispositivoCreate';
+import DispositivoAlter from '../pages/dispositivo/DispositivoAlter';
 
 import About from '../pages/about/About';
 
@@ -28,6 +29,8 @@ const Routes = () => (
     <BrowserRouter history={history}>
         <Switch>
             <Route exact path='/login' component={Login} />
+
+            <Route exact path='/novo-usuario' component={User} />
 
             <PrivateRoute exact path='/' component={Home} />
             
@@ -39,10 +42,10 @@ const Routes = () => (
             <PrivateRoute exact path='/historico' component={Historic} />
             <PrivateRoute exact path='/historico/:id' component={HistoricDetail} />
             
-            <PrivateRoute exact path="/usuario" component={User} />
-            <PrivateRoute exact path="/usuario/cadastrar" component={UserCreate} />
-            <PrivateRoute exact path="/usuario/:id" component={UserDetail} />
-            <PrivateRoute exact path="/usuario/alterar/:id" component={UserAlter} />
+            <PrivateRoute exact path="/dispositivo" component={Dispositivo} />
+            <PrivateRoute exact path="/dispositivo/cadastrar" component={DispositivoCreate} />
+            <PrivateRoute exact path="/dispositivo/:id" component={DispositivoDetail} />
+            <PrivateRoute exact path="/dispositivo/alterar/:id" component={DispositivoAlter} />
             
             <PrivateRoute exact path='/sobre' component={About} />
         </Switch>
