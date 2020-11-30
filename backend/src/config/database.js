@@ -74,7 +74,6 @@ bd.serialize(() => {
     bd.run(CARTAO_SCHEMA);
     bd.run(CARTAO_DISPOSITIVO_SCHEMA );
     bd.each("SELECT * FROM cartao_dispositivo", (err, usuario) => {
-        console.log('Usuario: ');
         console.log(usuario);
     });
 });
