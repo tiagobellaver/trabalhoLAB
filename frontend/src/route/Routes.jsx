@@ -35,8 +35,8 @@ const Routes = () => (
             <PrivateRoute exact path='/' component={Home} />
             
             <PrivateRoute exact path='/cartao' component={Cards} />
-            <PrivateRoute exact path='/cartao/:id' component={CardsDetail} />
             <PrivateRoute exact path='/cartao/cadastrar' component={CardCreate} />
+            <PrivateRoute exact path='/cartao/:id' component={CardsDetail} />
             <PrivateRoute exact path='/cartao/alterar/:id' component={CardAlter} />
 
             <PrivateRoute exact path='/historico' component={Historic} />
