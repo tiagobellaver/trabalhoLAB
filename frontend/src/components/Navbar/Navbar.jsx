@@ -26,7 +26,7 @@ export default props =>
                             <NavLink href="/cartao"><Image src={Cards} />Cartões</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="/usuario"><Image src={Users} style={{width: '10%'}}/>Usuários</NavLink>
+                            <NavLink href="/usuario"><Image src={Users} style={{width: '15%'}}/>Usuários</NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink href="/historico"><Image src={Historic} />Histórico</NavLink>
