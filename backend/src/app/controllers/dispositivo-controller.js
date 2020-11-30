@@ -24,8 +24,8 @@ class DispositivoControlador {
     lista() {
         return function(req, resp) {
             dispostivoDao.lista()
-                    .then(dispostivos => {
-                        return resp.json({dispostivos:dispostivos});
+                    .then(dispositivos => {
+                        return resp.json({dispositivos:dispositivos});
                     })
                     .catch(erro => {
                         resp.status(500).end();
@@ -37,8 +37,8 @@ class DispositivoControlador {
     mostrarDispositivo() {
         return function(req, resp) {
             dispostivoDao.buscaPorId(req.params.id)
-                    .then( dispostivo => {
-                        return resp.json({dispostivo:dispostivo});
+                    .then( dispositivo => {
+                        return resp.json({dispositivo:dispositivo});
                     })
                     .catch(erro => {
                         resp.status(500).end()

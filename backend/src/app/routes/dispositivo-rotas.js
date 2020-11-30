@@ -13,6 +13,6 @@ module.exports = (app) => {
     app.get(rotasDispositivo.mostrarCartoes, dispositivoControlador.mostrarCartoes());
     app.post(rotasDispositivo.adicionarCartao, Dispositivo.dispositivo_cartao(), dispositivoControlador.adicionarCartao());
     app.put(rotasDispositivo.setarAutorizacao, Dispositivo.dispositivo_cartao(), dispositivoControlador.setarAutorizacao());
-    app.delete(rotasDispositivo.removerCartao, Dispositivo.remove_dispositivo_cartao(), dispositivoControlador.removerCartao());
+    app.put(rotasDispositivo.removerCartao, Dispositivo.remove_dispositivo_cartao(), dispositivoControlador.removerCartao());
     app.get(rotasDispositivo.mostrarHistorico, dispositivoControlador.mostrarHistorico());
 };
