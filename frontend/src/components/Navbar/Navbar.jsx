@@ -7,6 +7,7 @@ import Cards from '../../assets/credit-card.svg';
 import Historic from '../../assets/history.svg';
 import Information from '../../assets/info.svg';
 import Logout from '../../assets/logout.svg';
+import Arduino from '../../assets/arduino.svg';
 
 export default props =>
 <>
@@ -22,7 +23,10 @@ export default props =>
                             <NavLink href="/"><Image src={Dashboard} />Dashboard</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="/cartoes"><Image src={Cards} />Cartões</NavLink>
+                            <NavLink href="/cartao"><Image src={Cards} />Cartões</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="/dispositivo"><Image src={Arduino} style={{width: '10%'}}/>Dispositivos</NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink href="/historico"><Image src={Historic} />Histórico</NavLink>
