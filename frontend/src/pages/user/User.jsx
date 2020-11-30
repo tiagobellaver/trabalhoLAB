@@ -1,20 +1,14 @@
 import React  from 'react';
 import { Container, Row, Col, Label } from 'reactstrap';
-import { Image } from 'react-bootstrap';
 import { ErrorMessage, Formik, Form, Field } from 'formik';
+import { Image } from 'react-bootstrap';
 import * as yup from 'yup';
 import axios from 'axios';
 import { history } from '../../history';
-import { Link } from 'react-router-dom'
-
-import './login.css';
 
 import LoginImage from '../../assets/login-header.svg';
 
-import User from '../../assets/user.svg';
-import Password from '../../assets/password.svg'
-
-const Login = () => {
+const User = () => {
 
     const handleSubmit = values => {
         axios.post('http://localhost:8080/api/usuario/login', values)
@@ -35,20 +29,20 @@ const Login = () => {
         <>
             <Container>
                 <Row className="justify-content-center">
-                    <Col lg={6} className="login-container">
+                <Col lg={6} className="login-container">
                         <Image src={LoginImage} fluid/>
                         <Formik initialValues={{}} onSubmit={handleSubmit} validationSchema={validations}>
                             <Form className="login-form">
                                 <Label className="label-login">Login</Label>
                                 <ErrorMessage component="span" name="email" className="form-error"></ErrorMessage>
                                 <div className="form-group">
-                                    <img src={User} alt="user-icon" />
+                                
                                     <Field name="email" type="text" className="form-field"/>
                                 </div>
                                     
                                 <ErrorMessage component="span" name="password" className="form-error"></ErrorMessage>
                                 <div className="form-group">
-                                    <img src={Password} alt="password-icon" />
+                                    
                                     <Field name="password" type="password" className="form-field"/>
                                 </div>
                                    
@@ -57,7 +51,6 @@ const Login = () => {
                                 </div>
                             </Form>
                         </Formik>
-                        <Link to='novo-usuario' className="new-user">Não tenho usuário</Link>
                     </Col>
                 </Row>
             </Container>
@@ -65,4 +58,4 @@ const Login = () => {
 
     );
 }
-export default Login
+export default User

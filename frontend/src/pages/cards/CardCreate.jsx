@@ -2,6 +2,7 @@ import React  from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input  } from 'reactstrap';
 import { Link } from 'react-router-dom'
 import Navbar from '../../components/Navbar/Navbar';
+
 export default props =>
 <>
     <Container fluid>
@@ -18,13 +19,13 @@ export default props =>
                             <Container>
                                 <Row>
                                     <Col>
-                                        <FormGroup>
+                                        <FormGroup className="forms-disp">
                                             <Label className="p-text-title" for="usarName" >Nome do Usuário</Label>
                                             <Input type="text" id="usarName"/>
                                         </FormGroup>
                                     </Col>
                                     <Col>
-                                        <FormGroup>
+                                        <FormGroup className="forms-disp">
                                             <Label className="p-text-title" for="email" >Email</Label>
                                             <Input type="email" id="email"/>
                                         </FormGroup>
@@ -34,22 +35,23 @@ export default props =>
                             <Container>
                                 <Row>
                                     <Col>
-                                        <FormGroup>
+                                        <FormGroup className="forms-disp">
                                             <Label className="p-text-title" for="email" >Senha</Label>
                                             <Input type="password" id="email"/>
                                         </FormGroup>
                                     </Col>
                                     <Col>
-                                        <FormGroup>
+                                        <FormGroup className="forms-disp">
                                             <Label  className="p-text-title" for="exampleSelect">Tipo do Dispositivo</Label>
                                             <Input type="select" name="select" id="exampleSelect">
-                                                <option>1</option>
-                                                <option>2</option>
+                                                <option></option>
+                                                <option value="0">Cartão</option>
+                                                <option value="1">Tag</option>
                                             </Input>
                                         </FormGroup>
                                     </Col>
                                     <Col>
-                                        <FormGroup>
+                                        <FormGroup className="forms-disp">
                                             <Label className="p-text-title" for="nickname" >Apelido do Dispositivo</Label>
                                             <Input type="text" id="nickname"/>
                                         </FormGroup>
@@ -59,24 +61,25 @@ export default props =>
                             <Container>
                                 <Row>
                                     <Col>
-                                        <FormGroup>
+                                        <FormGroup className="forms-disp">
                                             <Label  className="p-text-title" for="token" >Token Dispositivo</Label>
                                             <Input type="text" id="token"/>
                                         </FormGroup>
                                     </Col>
                                     <Col>
-                                        <FormGroup>
+                                        <FormGroup className="forms-disp">
                                             <Label className="p-text-title" for="status">Status</Label>
                                             <Input type="select" name="select" id="status">
-                                                <option>1</option>
-                                                <option>2</option>
+                                                <option></option>
+                                                <option value="1">Ativado</option>
+                                                <option value="0">Desativado</option>
                                             </Input>
                                         </FormGroup>
                                     </Col>
                                     <Col>
-                                        <FormGroup>
+                                        <FormGroup className="forms-disp">
                                             <Label  className="p-text-title" for="photograph" >Foto</Label>
-                                            <Input type="file" id="photograph"/>
+                                            <Input type="file" id="photograph" accept=".png, .jpg, .jpeg"/>
                                         </FormGroup>
                                     </Col>
                                 </Row>

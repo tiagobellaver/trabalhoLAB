@@ -1,33 +1,55 @@
 import React from 'react';
-import { Switch, Route, Router } from 'react-router-dom';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { history } from '../history';
 
+import User from '../pages/user/User';
 
 import Login from '../pages/login/Login';
+
 import Home from '../pages/home/Home';
+
 import Cards from '../pages/cards/Cards';
 import CardsDetail from '../pages/cards/CardDetail';
+import CardCreate from '../pages/cards/CardCreate';
+import CardAlter from '../pages/cards/CardAlter';
+
 import Historic from '../pages/historic/Historic';
 import HistoricDetail from '../pages/historic/HistoricDetails';
-import UserCreate from '../pages/user/CardCreate';
-import UserAlter from '../pages/user/CardAlter';
+
+import Dispositivo from '../pages/dispositivo/Dispositivo';
+import DispositivoDetail from '../pages/dispositivo/DispositivoDetail';
+import DispositivoCreate from '../pages/dispositivo/DispositivoCreate';
+import DispositivoAlter from '../pages/dispositivo/DispositivoAlter';
+
 import About from '../pages/about/About';
+
 import PrivateRoute from './PrivateRoute';
 
 const Routes = () => (
-    <Router history={history}>
+    <BrowserRouter history={history}>
         <Switch>
             <Route exact path='/login' component={Login} />
-            <PrivateRoute exact path='/home' component={Home} />
-            <PrivateRoute exact path='/cartoes' component={Cards} />
-            <PrivateRoute exact path='/cartao-detalhe' component={CardsDetail} />
+
+            <Route exact path='/novo-usuario' component={User} />
+
+            <PrivateRoute exact path='/' component={Home} />
+            
+            <PrivateRoute exact path='/cartao' component={Cards} />
+            <PrivateRoute exact path='/cartao/:id' component={CardsDetail} />
+            <PrivateRoute exact path='/cartao/cadastrar' component={CardCreate} />
+            <PrivateRoute exact path='/cartao/alterar/:id' component={CardAlter} />
+
             <PrivateRoute exact path='/historico' component={Historic} />
-            <PrivateRoute exact path='/historico-detalhe' component={HistoricDetail} />
-            <PrivateRoute exact path='/cadastrar-cartao' component={UserCreate} />
-            <PrivateRoute exact path='/alterar-cartao' component={UserAlter} />
+            <PrivateRoute exact path='/historico/:id' component={HistoricDetail} />
+            
+            <PrivateRoute exact path="/dispositivo" component={Dispositivo} />
+            <PrivateRoute exact path="/dispositivo/cadastrar" component={DispositivoCreate} />
+            <PrivateRoute exact path="/dispositivo/:id" component={DispositivoDetail} />
+            <PrivateRoute exact path="/dispositivo/alterar/:id" component={DispositivoAlter} />
+            
             <PrivateRoute exact path='/sobre' component={About} />
         </Switch>
-    </Router>
+    </BrowserRouter>
 )
 
 export default Routes;

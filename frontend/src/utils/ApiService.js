@@ -13,6 +13,7 @@ const ApiService = {
     ListaCartoes : () => {
         return fetch('http://localhost:8080/api/cartoes')
     },
+    
     TrataErros: res => {
         if(!res.ok){
             throw Error(res.responseText)

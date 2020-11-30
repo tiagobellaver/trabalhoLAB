@@ -21,7 +21,7 @@ class cardDetails extends Component {
     }
         
 render() {
-    const { usuarios } = this.state;
+    
     return(
     <>
    <Container fluid>
