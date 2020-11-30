@@ -5,6 +5,7 @@ import { ErrorMessage, Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
 import { history } from '../../history';
+import { Link } from 'react-router-dom'
 
 import './login.css';
 
@@ -56,6 +57,7 @@ const Login = () => {
                                 </div>
                             </Form>
                         </Formik>
+                        <Link to='novo-usuario' className="new-user">Não tenho usuário</Link>
                     </Col>
                 </Row>
             </Container>
