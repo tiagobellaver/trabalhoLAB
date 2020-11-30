@@ -158,7 +158,7 @@ class UsuarioControlador {
                     if(usuario == null || usuario == ""){
                         return resp.json({loged:false, error:"Email não cadastrado"});
                     }else if(usuario[0].senha == req.body.senha){
-                        return resp.json({loged:true, error:""});
+                        return resp.json({loged:true, usuario: usuario[0].id, error:""});
                     }else{
                         return resp.json({loged:false, error:"Combinação incorreta de senha e email"});
                     }

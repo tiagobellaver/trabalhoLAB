@@ -198,7 +198,7 @@ class UsuarioDao {
         return new Promise((resolve, reject) => {
             this._db.all(
                 `
-                SELECT senha
+                SELECT senha, id
                 FROM usuario
                 WHERE email = ?
             `,

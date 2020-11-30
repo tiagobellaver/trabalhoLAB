@@ -19,16 +19,17 @@ const Login = () => {
     const handleSubmit = values => {
         axios.post('http://localhost:8080/api/usuario/login', values)
         .then(resp => {
-            const { data } = resp
-            if(data) {
-                localStorage.setItem('app-token', data)
-                history.push('/')
+            const data = resp.data;
+            if(data.loged) {
+                localStorage.setItem('loged', true);
+                localStorage.setItem('usuario', data.usuario)
+                history.push('/');
             }
         })
     }
     const validations = yup.object().shape({
         email: yup.string().email().required(),
-        password: yup.string().min(5).required()
+        senha: yup.string().min(5).required()
     })
 
     return (
@@ -49,7 +50,7 @@ const Login = () => {
                                 <ErrorMessage component="span" name="password" className="form-error"></ErrorMessage>
                                 <div className="form-group">
                                     <img src={Password} alt="password-icon" />
-                                    <Field name="password" type="password" className="form-field"/>
+                                    <Field name="senha" type="password" className="form-field"/>
                                 </div>
                                    
                                 <div className="form-group">
