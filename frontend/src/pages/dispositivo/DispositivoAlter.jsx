@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 import ApiService from '../../utils/ApiService';
 import axios from 'axios';
 import * as yup from 'yup';
-import dispositivoRotas from '../../../../backend/src/app/routes/dispositivo-rotas';
 
 class UserCreate extends Component {
 
@@ -21,7 +20,6 @@ class UserCreate extends Component {
                 this.state.dispositivo = res.dispositivo;
                 console.log(res.dispositivo);
             }).catch(err => console.log(err));
-            
     }
 
     alterarDispositivo = values => {

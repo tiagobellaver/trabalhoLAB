@@ -13,7 +13,7 @@ const DispositivoCreate = () => {
         axios.post('http://localhost:8080/api/dispositivo/adicionar', values)
             .then(resp => {
                 console.log(resp);
-                this.window.location.href = "/dispositivo";
+
             })
     }
 
