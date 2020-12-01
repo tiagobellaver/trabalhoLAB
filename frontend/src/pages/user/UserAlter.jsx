@@ -27,8 +27,7 @@ class UserAlter extends Component {
         axios.put(`http://localhost:8080/api/usuario/editar/${this.state.usuario.id}`, values)
             .then(resp => {
                 console.log(resp);
-                this.window.location.href = "/usuario";
-            })
+            }).catch(err => console.log(err));
     }
 
     validations = yup.object().shape({
@@ -38,7 +37,6 @@ class UserAlter extends Component {
     })
 
     render() {
-        const { usuario } = this.state;
         return (
             <>
                 <Container>
@@ -46,24 +44,24 @@ class UserAlter extends Component {
                         <Col lg={6} className="login-container">
                             <Formik initialValues={{}} onSubmit={this.alterarUsuario} validationSchema={this.validations}>
                                 <Form className="login-form">
-                                    <Label className="label-login">Novo Usuário</Label>
+                                    <Label className="label-login">Alterar Usuário</Label>
                                     
                                     <ErrorMessage component="span" name="nome" className="form-error"></ErrorMessage>
                                     <div className="forms-disp">
                                         <Label className="p-text-title" >Nome</Label>
-                                        <Field name="nome" type="text" className="form-field" value={`${usuario.nome}`}/>
+                                        <Field name="nome" type="text" className="form-field"/>
                                     </div>
 
                                     <ErrorMessage component="span" name="email" className="form-error"></ErrorMessage>
                                     <div className="forms-disp">
                                         <Label className="p-text-title" >E-mail</Label>
-                                        <Field name="email" type="text" className="form-field" value={`${usuario.email}`}/>
+                                        <Field name="email" type="text" className="form-field"/>
                                     </div>
 
                                     <ErrorMessage component="span" name="senha" className="form-error"></ErrorMessage>
                                     <div className="forms-disp">
                                         <Label className="p-text-title" >Senha</Label>
-                                        <Field name="senha" type="password" className="form-field" value={`${usuario.email}`} />
+                                        <Field name="senha" type="password" className="form-field" />
                                     </div>
                                     
                                     <div className="form-group"  style={{marginTop: '20px'}}>

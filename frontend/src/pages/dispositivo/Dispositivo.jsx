@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import { Container, Row, Col, Table, Button } from 'reactstrap';
+import { Container, Row, Col, Table } from 'reactstrap';
 
 import Navbar from '../../components/Navbar/Navbar';
 import { Link } from 'react-router-dom'
@@ -33,7 +33,7 @@ render() {
                 <h1 className="title-page">Dispositivos</h1>
                 <hr className="title-line"/>
                 <Col sm={10} md={10} lg={10} className="content-container">
-                    <Button className="new-user-button" color="info" href="/dispositivo/cadastrar">Novo Dispositivo</Button>
+                    <Link to="/dispositivo/cadastrar"><button className="new-card" style={{margin: '10px'}} >+ Novo Dispositivo</button></Link>
                     <Table>
                         <thead>
                             <tr>
