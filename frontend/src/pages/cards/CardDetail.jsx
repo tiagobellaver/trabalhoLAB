@@ -28,10 +28,15 @@ class cardDetails extends Component {
     }
 
     excluirCartao = () => {
-        axios.delete(`http://localhost:8080/api/cartao/deletar/${this.state.cartao.id}`)
+        axios.delete(`http://localhost:8080/api/cartao/deletar/${this.state.cartoes.id}`)
             .then(resp => {
                 console.log(resp);
+<<<<<<< HEAD
             })
+=======
+                window.location.reload();
+            }).catch(err => console.log(err));
+>>>>>>> 8d6959f19dd44670b7a6471dd65c440955b66033
     }
 
     render() {
