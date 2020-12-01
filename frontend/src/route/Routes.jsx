@@ -2,7 +2,10 @@ import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { history } from '../history';
 
+import UserCreate from '../pages/user/UserCreate';
 import User from '../pages/user/User';
+import UserDetails from '../pages/user/UserDetails';
+import UserAlter from '../pages/user/UserAlter';
 
 import Login from '../pages/login/Login';
 
@@ -30,8 +33,6 @@ const Routes = () => (
         <Switch>
             <Route exact path='/login' component={Login} />
 
-            <Route exact path='/novo-usuario' component={User} />
-
             <PrivateRoute exact path='/' component={Home} />
             
             <PrivateRoute exact path='/cartao' component={Cards} />
@@ -47,6 +48,10 @@ const Routes = () => (
             <PrivateRoute exact path="/dispositivo/:id" component={DispositivoDetail} />
             <PrivateRoute exact path="/dispositivo/alterar/:id" component={DispositivoAlter} />
             
+            <PrivateRoute exact path="/usuario" component={User} />
+            <PrivateRoute exact path="/usuario/:id" component={UserDetails} />
+            <PrivateRoute exact path="/usuario/alterar/:id" component={UserAlter} />
+            <Route exact path='/novo-usuario' component={UserCreate} />
             <PrivateRoute exact path='/sobre' component={About} />
         </Switch>
     </BrowserRouter>
