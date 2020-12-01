@@ -23,3 +23,35 @@
 .delete-button:hover {
     color: #3066BE;
 }
+.form-group-new{
+    justify-content: space-between;
+    align-items: center;
+    display: inline-flex;
+}
+.form-group-box{
+    margin-top: 30px;
+    display: block !important;
+    font-size: 16px;
+    font-weight: 700;
+    color: #3066BE;
+}
+.form-group-box .form-field{
+    border-radius: 6px;
+    box-shadow: none;
+    border: 1px solid black;
+    width: 150px;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+.add-button{
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    color: #3066BE;
+    background-color: white;
+    border: 1px solid #3066BE;
+    border-radius: 4px;
+    padding: 7px 10px;
+    background: white;
+    outline: none;
+}
