@@ -11,7 +11,7 @@ class Card extends Component {
     render() {
         return(
             <>
-            <Col sm={4} md={4} lg={4} className="card-container d-flex">
+            <Col sm={12} md={12} lg={12} className="card-container d-flex">
             
                 <Col sm={6} md={6} lg={6} className="card-icon">
                     <Image src={CardIcon} fluid/>
