@@ -29,7 +29,7 @@ class UserDetails extends Component {
         axios.delete(`http://localhost:8080/api/usuario/deletar/${this.state.usuario.id}`)
         .then(resp => {
             console.log(resp);
-        })
+        }).catch(err => console.log(err));
     }
 
     render() {
