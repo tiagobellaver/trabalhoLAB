@@ -42,32 +42,26 @@ const CardCreate = () => {
                                             <Row>
                                                 <Col>
                                                     <div className="forms-disp">
-                                                        <Label className="p-text-title" for="nickname" >Apelido do Cartão</Label>
-                                                        <Field type="text" name="apelido" />
+                                                        <Label className="p-text-title" for="nickname" >Apelido do Cartão</Label><br/>
+                                                        <Field type="text" name="apelido" style={{width: '50%'}} />
                                                     </div>
-                                                </Col>
-                                                <Col>
+                                                
                                                     <div className="forms-disp">
-                                                        <Label className="p-text-title" for="usuario" >Usuário do Cartão</Label>
-                                                        <Field type="text" name="usuario" />
+                                                        <Label className="p-text-title" for="usuario" >Usuário do Cartão</Label><br/>
+                                                        <Field type="text" name="usuario" style={{width: '50%'}} />
                                                     </div>
-                                                </Col>
-                                            </Row>
-                                        </Container>
-                                        <Container>
-                                            <Row>
-                                                <Col>
-                                                    <FormGroup className="forms-disp">
-                                                        <Label className="p-text-title" for="email" >RFID do cartão</Label>
-                                                        <Field type="text" name="rfid" />
-                                                    </FormGroup>
+                                        
+                                                    <div className="forms-disp">
+                                                        <Label className="p-text-title" for="email" >RFID do cartão</Label><br/>
+                                                        <Field type="text" name="rfid" style={{width: '50%'}} />
+                                                    </div>
                                                 </Col>
                                                 
                                             </Row>
                                         </Container>
                                         <div className="button-centralizer">
-                                        <Link to="/cartoes" type="button" className="p-text-value mrg-link">Cancelar</Link>
-                                        <button type="submit" className="p-text-value">Cadastrar</button>
+                                        <button type="button" className="new-card-action mrg-link"><Link to="/cartao">Cancelar</Link></button>
+                                        <button type="submit" className="new-card-action">Cadastrar</button>
                                     </div>
                                     </Form>
                                     

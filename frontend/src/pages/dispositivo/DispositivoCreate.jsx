@@ -46,7 +46,7 @@ const DispositivoCreate = () => {
                             </Formik>
                             <div className="group-btn">
                                 <div className="d-flex">
-                                    <button className="cad-user-btn" type="text"><a href="/dispositivos">Voltar</a></button>
+                                    <button className="cad-user-btn" type="text"><a href="/dispositivo">Voltar</a></button>
                                 </div>
                             </div>
                         </Col>
