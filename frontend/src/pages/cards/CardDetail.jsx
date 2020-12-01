@@ -12,40 +12,18 @@ import ApiService from '../../utils/ApiService';
 class cardDetails extends Component {
 
     state = {
-        dispositivo: [],
-        cartoes: []
+        cartao: []
     };
-    componentDidMount() {
-        const id = this.props.match.params.id;
-        var dispostivo_s;
 
-        ApiService.Dispositivo(id)
+    componentDidMount() {
+        const id  = this.props.match.params.id;
+        ApiService.Cartao(id)
             .then(res => ApiService.TrataErros(res))
             .then(res => {
-                console.log(res.dispositivo);
-                dispostivo_s = res.dispositivo;
-
-                ApiService.CartaoDispositivo(id)
-                    .then(res => ApiService.TrataErros(res))
-                    .then(res => {
-                        console.log(res.cartoes);
-                        this.setState({
-                            dispositivo: dispostivo_s,
-                            cartoes: res.cartoes
-                        });
-                    }).catch(err => console.log(err));
-
-                ApiService.Cartao(id)
-                    .then(res => ApiService.TrataErros(res))
-                    .then(res => {
-                        console.log(res.cartoes);
-                        this.setState({
-                            dispositivo: dispostivo_s,
-                            cartoes: res.cartoes
-                        });
-                    }).catch(err => console.log(err));
-
-
+                this.setState({ 
+                    cartao: res.cartao,
+                });
+                console.log(res.cartao);
             }).catch(err => console.log(err));
     }
 
@@ -53,13 +31,12 @@ class cardDetails extends Component {
         axios.delete(`http://localhost:8080/api/cartao/deletar/${this.state.cartao.id}`)
             .then(resp => {
                 console.log(resp);
-                window.location.reload();
             })
     }
 
     render() {
 
-        const { dispositivo, cartoes } = this.state;
+        const { cartao } = this.state;
 
         return (
             <>
@@ -75,7 +52,7 @@ class cardDetails extends Component {
                             </div>
                             <div className="padd-dash content-container">
                                 <div className="access-card flex-line">
-                                    <p className="p-text-title">#{cartoes.id}</p>
+                                    <p className="p-text-title">Cartão #{cartao.id}</p>
                                 </div>
                                 <Container>
                                     <Row className="user-details">
@@ -83,22 +60,23 @@ class cardDetails extends Component {
                                             <Image src="https://img.ibxk.com.br/materias/5866/21592.jpg?w=328" fluid />
                                         </Col>
                                         <Col Col >
+
                                             <ul className="user-card-list">
                                                 <li className="card-item">
-                                                    <p className="p-text-title">Nome do usuário</p>
-                                                    <p className="p-text-value">Zé</p>
-                                                </li>
-                                                <li className="card-item">
-                                                    <p className="p-text-title">E-mail</p>
-                                                    <p className="p-text-value">ze@seuze</p>
+                                                    <p className="p-text-title">ID do cartão</p>
+                                                    <p className="p-text-value">{cartao.id}</p>
                                                 </li>
                                                 <li className="card-item">
                                                     <p className="p-text-title">Apelido do dispositvo</p>
-                                                    <p className="p-text-value">{cartoes.apelido}</p>
+                                                    <p className="p-text-value">{cartao.apelido}</p>
                                                 </li>
                                                 <li className="card-item">
-                                                    <p className="p-text-title">Autorizado</p>
-                                                    <p className="p-text-value">Sim</p>
+                                                    <p className="p-text-title">Usuario</p>
+                                                    <p className="p-text-value">{cartao.usuario}</p>
+                                                </li>
+                                                <li className="card-item">
+                                                    <p className="p-text-title">RFID</p>
+                                                    <p className="p-text-value">{cartao.rfid}</p>
                                                 </li>
                                             </ul>
                                         </Col>
@@ -111,7 +89,7 @@ class cardDetails extends Component {
                                     </div>
                                     <Formik initialValues={{}} onSubmit={this.excluirCartao}>
                                         <Form>
-                                            <Link to="/cartao"><button className="delete-button" type="submit">Excluir Registro</button></Link>
+                                            <button className="delete-button" type="submit">Excluir Registro</button>
                                         </Form>
                                     </Formik>
                                 </div>
