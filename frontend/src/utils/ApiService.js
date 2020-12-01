@@ -25,6 +25,9 @@ const ApiService = {
     Usuario : (id) => {
         return fetch(`http://localhost:8080/api/usuario/${id}`)
     },
+    Cartao : (id) => {
+        return fetch(`http://localhost:8080/api/cartoes/${id}`)
+    },
     CartaoDispositivo : (id) => {
         return fetch(`http://localhost:8080/api/dispositivo/${id}/cartao`)
     },

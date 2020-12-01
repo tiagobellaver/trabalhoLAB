@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import Navbar from '../../components/Navbar/Navbar';
+import { Link } from 'react-router-dom'
 
 import './cards.css';
 
@@ -48,7 +49,7 @@ class Cards extends Component {
                                     {cartoes.map(cartao => (
                                         <Col sm={10} md={10} lg={10}>
 
-                                            <Card key={cartao.id} />
+                                            <Link to={`/cartao/${cartao.id}`} ><Card key={cartao.id} /></Link>
 
                                         </Col>
                                     ))}
