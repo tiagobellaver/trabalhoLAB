@@ -6,10 +6,43 @@ class HistoricoDao {
         this._db = db;
     }
 
+
+    dashboard_historico(){
+        return new Promise((resolve, reject) => {
+            this._db.all(
+                `SELECT historico.id as "id", historico.date as "date", historico.autorizado as "autorizado",
+                dispositivo.id as "dispositivo_id", dispositivo.apelido as "dispositivo_apelido",
+                cartao.id as "cartao_id", cartao.apelido as "cartao_apelido",
+                usuario.id as "usuario_id", usuario.nome as "usuario_nome"
+                FROM historico
+                INNER JOIN dispositivo on historico.dispositivo = dispositivo.id
+                INNER JOIN cartao on historico.cartao = cartao.id
+                LEFT JOIN usuario on cartao.usuario = usuario.id
+                ORDER BY historico.id DESC LIMIT 5
+                `,
+                (erro, resultados) => {
+                    console.log(resultados);
+                    if (erro) return reject('Não foi possível listar os cartoes!');
+
+                    return resolve(resultados);
+                }
+            )
+        });
+    }
+
     lista() {
         return new Promise((resolve, reject) => {
             this._db.all(
-                'SELECT * FROM historico',
+                `SELECT historico.id as "id", historico.date as "date", historico.autorizado as "autorizado",
+                dispositivo.id as "dispositivo_id", dispositivo.apelido as "dispositivo_apelido",
+                cartao.id as "cartao_id", cartao.apelido as "cartao_apelido",
+                usuario.id as "usuario_id", usuario.nome as "usuario_nome"
+                FROM historico
+                INNER JOIN dispositivo on historico.dispositivo = dispositivo.id
+                INNER JOIN cartao on historico.cartao = cartao.id
+                LEFT JOIN usuario on cartao.usuario = usuario.id
+                ORDER BY historico.id DESC
+                `,
                 (erro, resultados) => {
                     if (erro) return reject('Não foi possível listar os cartoes!');
 
@@ -23,9 +56,15 @@ class HistoricoDao {
         return new Promise((resolve, reject) => {
             this._db.get(
                 `
-                    SELECT *
+                    SELECT historico.id as "id", historico.date as "date", historico.autorizado as "autorizado",
+                    dispositivo.id as "dispositivo_id", dispositivo.apelido as "dispositivo_apelido",
+                    cartao.id as "cartao_id", cartao.apelido as "cartao_apelido",
+                    usuario.id as "usuario_id", usuario.nome as "usuario_nome"
                     FROM historico
-                    WHERE id = ?
+                    INNER JOIN dispositivo on historico.dispositivo = dispositivo.id
+                    INNER JOIN cartao on historico.cartao = cartao.id
+                    LEFT JOIN usuario on cartao.usuario = usuario.id
+                    WHERE historico.id = ?
                 `,
                 [id],
                 (erro, historico) => {

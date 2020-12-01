@@ -37,9 +37,9 @@ render() {
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>APELIDO</th>
+                                <th>USUÁRIO</th>
                                 <th>DATA</th>
-                                <th>STATUS</th>
+                                <th>AUTORIZADO</th>
                                 <th>AÇÕES</th>
                             </tr>
                         </thead>
@@ -47,11 +47,11 @@ render() {
                             {historicos.map(historico => (
                                  <tr  key={historico.id}>
                                     <td>{historico.id}</td>
-                                    <td>{historico.dispositivo}</td>
+                                    <td>{historico.usuario_nome}</td>
                                     <td>{historico.date}</td>
-                                    <td>{historico.autorizado}</td>
+                                    <td>{historico.autorizado ? ("Sim") : ("Não")}</td>
                                     <td>
-                                        <Link to="/historico-detalhe" type="button" className="link-option">Detalhes</Link>
+                                        <Link to={`/historico/${historico.id}`} type="button" className="link-option">Detalhes</Link>
                                     </td>
                                  </tr>
                             ))}

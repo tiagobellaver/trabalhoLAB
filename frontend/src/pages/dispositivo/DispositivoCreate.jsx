@@ -4,16 +4,16 @@ import Navbar from '../../components/Navbar/Navbar';
 import axios from 'axios';
 import * as yup from 'yup';
 import { Formik, Form, Field } from 'formik';
-import { Redirect } from 'react-router'
+import { useHistory } from "react-router-dom";
 
 const DispositivoCreate = () => {
-
+    const history = useHistory();
     const cadastrarDispositivo = values => {
         console.log(values);
         axios.post('http://localhost:8080/api/dispositivo/adicionar', values)
             .then(resp => {
                 console.log(resp);
-
+                history.push("/dispositivo");
             })
     }
 

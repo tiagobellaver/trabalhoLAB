@@ -11,6 +11,7 @@ class HistoricoController {
         return {
             requisicao: '/api/historico/requisicao',
             historicos: '/api/historicos',
+            dashboard: '/api/dashboard/historico',
             mostrarDetalhes: '/api/historico/:id'
         };
     }
@@ -60,6 +61,19 @@ class HistoricoController {
     historicos() {
         return function(req, resp) {
             historicoDao.lista()
+                    .then(historicos => {
+                        return resp.json({historicos:historicos});
+                    })
+                    .catch(erro => {
+                        resp.status(500).end();
+                        console.log(erro);
+                    });
+        };
+    }
+
+    dashboard_historico() {
+        return function(req, resp) {
+            historicoDao.dashboard_historico()
                     .then(historicos => {
                         return resp.json({historicos:historicos});
                     })

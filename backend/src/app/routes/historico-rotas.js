@@ -6,4 +6,6 @@ module.exports = (app) => {
     app.post(rotasHistorico.requisicao, historicoController.requisicao());
     app.get(rotasHistorico.historicos, historicoController.historicos());
     app.get(rotasHistorico.mostrarDetalhes, historicoController.mostrarDetalhes());
+    app.get(rotasHistorico.dashboard, historicoController.dashboard_historico());
+    
 };
