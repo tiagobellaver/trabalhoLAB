@@ -38,7 +38,7 @@ export default props =>
                             <NavLink href="/sobre"><Image src={Information} />Informações</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="/login"><Image src={Logout} />Sair</NavLink>
+                            <NavLink href="/logout"><Image src={Logout} />Sair</NavLink>
                         </NavItem>
                     </Nav>
                 </Col>

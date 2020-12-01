@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Table} from 'reactstrap';
+import { Container, Row, Col, Table, Label} from 'reactstrap';
 import { Formik, Form, Field } from 'formik';
 import axios from 'axios';
 import Navbar from '../../components/Navbar/Navbar';
@@ -52,10 +52,19 @@ class DispositivoDetails extends Component {
         })
     }
 
-    excluirDispositivo = values => {
+    excluirDispositivo = () => {
         axios.delete(`http://localhost:8080/api/dispositivo/deletar/${this.state.dispositivo.id}`)
         .then(resp => {
             console.log(resp);
+        })
+    }
+
+    adicionarCartao = values => {
+        console.log(values);
+        axios.post(`http://localhost:8080/api/adicionarCartao`, values)
+        .then(resp => {
+            console.log(resp);
+            window.location.reload();
         })
     }
 
@@ -133,6 +142,17 @@ class DispositivoDetails extends Component {
                                         ))}
                                     </tbody>
                                 </Table>
+                                <Formik initialValues={{dispositivo:this.props.match.params.id, autorizado:1}} onSubmit={this.adicionarCartao}>
+                                    <Form className="form-group-new">
+                                        <div className="form-group-box">
+                                            <Label>Id do Cartão</Label>
+                                            <Field name="cartao" type="number" className="form-field" />
+                                        </div>
+                                        <div className="form-group-box">
+                                            <button className="add-button" type="submit">Adicionar Cartão</button>
+                                        </div>
+                                    </Form>
+                                </Formik>
                             </div>
                         </Col>
                     </Row>

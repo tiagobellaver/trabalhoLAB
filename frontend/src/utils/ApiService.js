@@ -28,6 +28,14 @@ const ApiService = {
     CartaoDispositivo : (id) => {
         return fetch(`http://localhost:8080/api/dispositivo/${id}/cartao`)
     },
+
+    ListaHistoricoDashboard : () =>{
+        return fetch(`http://localhost:8080/api/dashboard/historico`)
+    },
+
+    Historico : (id) => {
+        return fetch(`http://localhost:8080/api/historico/${id}`)
+    },
     
     TrataErros: res => {
         if(!res.ok){

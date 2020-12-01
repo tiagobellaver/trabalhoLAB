@@ -4,26 +4,25 @@ import { Image } from 'react-bootstrap';
 import { ErrorMessage, Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
-import { history } from '../../history';
+import { useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom'
-
 import './login.css';
-
 import LoginImage from '../../assets/login-header.svg';
-
 import User from '../../assets/user.svg';
 import Password from '../../assets/password.svg'
 
 const Login = () => {
+    const history = useHistory();
 
     const handleSubmit = values => {
         axios.post('http://localhost:8080/api/usuario/login', values)
         .then(resp => {
             const data = resp.data;
+            console.log(data);
             if(data.loged) {
-                localStorage.setItem('loged', true);
+                localStorage.setItem('logged', true);
                 localStorage.setItem('usuario', data.usuario)
-                history.push('/');
+                history.push("/");
             }
         })
     }
@@ -31,7 +30,6 @@ const Login = () => {
         email: yup.string().email().required(),
         senha: yup.string().min(5).required()
     })
-
     return (
         <>
             <Container>
@@ -52,7 +50,7 @@ const Login = () => {
                                     <img src={Password} alt="password-icon" />
                                     <Field name="senha" type="password" className="form-field"/>
                                 </div>
-                                   
+                                
                                 <div className="form-group">
                                     <button className="login-button" type="submit">Entrar</button>
                                 </div>
