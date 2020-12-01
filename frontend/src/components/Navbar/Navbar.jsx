@@ -8,7 +8,7 @@ import Historic from '../../assets/history.svg';
 import Information from '../../assets/info.svg';
 import Logout from '../../assets/logout.svg';
 import Arduino from '../../assets/arduino.svg';
-
+import Users from '../../assets/users.svg';
 export default props =>
 <>
     <Container fluid>
@@ -26,10 +26,13 @@ export default props =>
                             <NavLink href="/cartao"><Image src={Cards} />Cartões</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="/dispositivo"><Image src={Arduino} style={{width: '10%'}}/>Dispositivos</NavLink>
+                            <NavLink href="/dispositivo"><Image src={Arduino} style={{width: '15%'}}/>Dispositivos</NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink href="/historico"><Image src={Historic} />Histórico</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="/usuario"><Image src={Users} style={{width: '15%'}}/>Usuário</NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink href="/sobre"><Image src={Information} />Informações</NavLink>
