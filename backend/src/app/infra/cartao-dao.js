@@ -50,9 +50,11 @@ class CartaoDao {
         return new Promise((resolve, reject) => {
             this._db.get(
                 `
-                    SELECT *
+                    SELECT cartao.id as "id", cartao.apelido as "apelido", cartao.rfid as "rfid",
+                    usuario.nome as "usuario_nome", usuario.id as "usuario_id"
                     FROM cartao
-                    WHERE id = ?
+                    LEFT JOIN usuario ON cartao.usuario = usuario.id
+                    WHERE cartao.id = ?
                 `,
                 [id],
                 (erro, cartao) => {
@@ -111,12 +113,14 @@ class CartaoDao {
             this._db.run(`
                 UPDATE cartao SET
                 apelido = ?,
-                rfid = ?
+                rfid = ?,
+                usuario = ?
                 WHERE id = ?
             `,
             [
                 cartao.body.apelido,
                 cartao.body.rfid,
+                cartao.body.usuario_id,
                 cartao.params.id
             ],
             erro => {
