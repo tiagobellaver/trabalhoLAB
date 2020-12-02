@@ -17,7 +17,7 @@ INSERT INTO usuario (
     nome, 
     email,
     senha
-) SELECT 'Administrador', 'admin@admin.com', '123' WHERE NOT EXISTS (SELECT * FROM usuario WHERE email = 'admin@admin.com')
+) SELECT 'Administrador', 'admin@admin.com', '12345' WHERE NOT EXISTS (SELECT * FROM usuario WHERE email = 'admin@admin.com')
 `;
 
 const CARTAO_SCHEMA = 
@@ -73,10 +73,6 @@ bd.serialize(() => {
     bd.run(INSERIR_USUARIO_1);
     bd.run(CARTAO_SCHEMA);
     bd.run(CARTAO_DISPOSITIVO_SCHEMA );
-    bd.each("SELECT * FROM cartao_dispositivo", (err, usuario) => {
-        console.log('Usuario: ');
-        console.log(usuario);
-    });
 });
 
 process.on('SIGINT', () =>

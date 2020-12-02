@@ -15,4 +15,5 @@ module.exports = (app) => {
     app.get(rotasUsuario.mostrarCartoes, usuarioControlador.mostrarCartoes());
     app.post(rotasUsuario.login, Usuario.login(), usuarioControlador.login());
     app.get(rotasUsuario.mostrarHistorico, usuarioControlador.mostrarHistorico());
+    app.get(rotasUsuario.dashboard, usuarioControlador.dashboard());
 };

@@ -17,7 +17,8 @@ class UsuarioControlador {
             mostrarDispositivos: '/api/usuario/:id/dispositivo',
             mostrarCartoes: '/api/usuario/:id/cartao',
             login: '/api/usuario/login',
-            mostrarHistorico: '/api/usuario/:id/historico'
+            mostrarHistorico: '/api/usuario/:id/historico',
+            dashboard: '/api/usuario/:id/dashboard_historico'
         };
     }
 
@@ -139,7 +140,19 @@ class UsuarioControlador {
         return function(req, resp) {
             usuarioDao.mostrarHistorico(req.params.id)
                 .then(historico => {
-                    return resp.json({historico:historico});
+                    return resp.json({historicos:historico});
+                }).catch(erro => {
+                    resp.status(500).end();
+                    console.log(erro);
+                });
+        };
+    }
+
+    dashboard() {
+        return function(req, resp) {
+            usuarioDao.dashboard(req.params.id)
+                .then(historico => {
+                    return resp.json({historicos:historico});
                 }).catch(erro => {
                     resp.status(500).end();
                     console.log(erro);
@@ -158,7 +171,7 @@ class UsuarioControlador {
                     if(usuario == null || usuario == ""){
                         return resp.json({loged:false, error:"Email não cadastrado"});
                     }else if(usuario[0].senha == req.body.senha){
-                        return resp.json({loged:true, error:""});
+                        return resp.json({loged:true, usuario: usuario[0].id, error:""});
                     }else{
                         return resp.json({loged:false, error:"Combinação incorreta de senha e email"});
                     }

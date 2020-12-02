@@ -122,13 +122,14 @@ td {
 /* revisar */
 
 .padd-dash {
-    padding: 20px 30px;
+    padding: 20px 20px;
 }
 
 .p-text-title {
-    font-weight: 600;
     color: #3066BE;
-    font-size: 14px;
+    font-size: 16px;
+    margin-right: 5px;
+    font-weight: 700 !important;
 }
 
 .p-text-value {
@@ -179,11 +180,95 @@ td {
 }
 
 .card-create-padding {
-    padding-top: 100px;
+    padding-top: 60px;
 }
 
 .button-centralizer {
     display: flex;
     justify-content: center;
     margin-top: 30px;
+}
+
+.forms-disp {
+    display: block !important;
+    margin-bottom: 15px;
+}
+
+.new-user-button {
+    margin: 30px 30px 10px 0;
+    
+}
+
+.form-group-user {
+    margin-top: 30px;
+    display: block !important;
+    font-size: 16px;
+    font-weight: 700;
+    color: #3066BE;
+    
+}
+
+.form-group-user input {
+    border-radius: 6px;
+    box-shadow: none;
+    border: 1px solid black;
+}
+
+.form-group-create {
+    
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cad-user-btn {
+    margin-top: 80px;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 700;
+    color: #3066BE;
+    background-color: white;
+    border: 1px solid #3066BE;
+    border-radius: 4px;
+    padding: 7px 49px;
+    background: white;
+    margin-bottom: 50px;
+    outline: none;
+    
+    justify-content: center;
+}
+
+.group-btn {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.group-btn button a {
+    outline: none;
+    text-decoration: none;
+    color: #3066BE;
+}
+
+.new-card-action {
+    background-color: white;
+    border: none;
+    padding: 5px 15px;
+    text-decoration: none;
+}
+
+.new-card-action a {
+    text-transform: none;
+}
+
+.new-card-action a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.new-card-action:hover {
+    background-color: #3066BE;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
 }

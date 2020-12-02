@@ -6,24 +6,53 @@ import './card.css';
 
 import CardIcon from '../../assets/card-icon.png';
 
+import ApiService from '../../utils/ApiService';
+
 class Card extends Component {
 
+    state = {
+        cartoes: [],
+    };
+
+    componentDidMount() {
+        ApiService.ListaCartoes()
+            .then(res => ApiService.TrataErros(res))
+            .then(res => {
+                console.log(res)
+                this.setState({ cartoes: res.cartoes });
+            }).catch(err => console.log(err));
+
+    }
+
     render() {
-        return(
+
+        const { cartoes } = this.state;
+
+        return (
             <>
-            <Col sm={4} md={4} lg={4} className="card-container d-flex">
-            
-                <Col sm={6} md={6} lg={6} className="card-icon">
-                    <Image src={CardIcon} fluid/>
+                <Col sm={12} md={12} lg={12} className="card-container d-flex">
+
+                    <Col sm={6} md={6} lg={6} className="card-icon">
+                        <Image src={CardIcon} fluid />
+                    </Col>
+
+
+                    <Col sm={6} md={6} lg={6}>
+                        
+                            <tbody>
+                            {cartoes.map(cartao => (
+                                <tr key={cartao.id}>
+                                    <td>
+                                       ID do Cartão: {cartao.id}
+                                    </td>
+                                    <td>Apelido: {cartao.apelido}</td>
+                                </tr>
+                            
+                        ))}
+                        </tbody>
+                    </Col>
+
                 </Col>
-                    
-                <Col sm={6} md={6} lg={6}>
-                    <p><span className="card-bold">Apelido:</span> Rei da Casa</p>
-                    <p><span className="card-bold">Usuário:</span> Tiago</p>
-                    <p><span className="card-bold">Autorizado:</span> Sim</p>
-                    <p><span className="card-bold">Status:</span> Ativo</p>
-                </Col>
-            </Col>
             </>
         );
     }
