@@ -170,30 +170,52 @@ class UsuarioDao {
         });
     }
 
-    mostrarHistorico(id) {
+    dashboard(id){
         return new Promise((resolve, reject) => {
             this._db.all(
-                `
-                SELECT historico.id as "id", historico.date as "Data", historico.autorizado as "autorizado",
-                cartao.id as "cartao_id", cartao.apelido as "cartao_apelido", cartao.rfid as "cartao_rfid",
-                dispositivo.id as "dispositivo_id", dispositivo.apelido as "dispositivo_apelido"
+                `SELECT historico.id as "id", historico.date as "date", historico.autorizado as "autorizado",
+                dispositivo.id as "dispositivo_id", dispositivo.apelido as "dispositivo_apelido",
+                cartao.id as "cartao_id", cartao.apelido as "cartao_apelido",
+                usuario.id as "usuario_id", usuario.nome as "usuario_nome"
                 FROM historico
                 INNER JOIN dispositivo on historico.dispositivo = dispositivo.id
-                INNER JOIN cartao on historico.dispositivo = dispositivo.id
-                INNER JOIN usuario on dispositivo.usuario = usuario.id
+                INNER JOIN cartao on historico.cartao = cartao.id
+                LEFT JOIN usuario on dispositivo.usuario = usuario.id
                 WHERE usuario.id = ?
-            `,
-                [id],
-                (erro, cartoes) => {
-                    if (erro) {
-                        return reject('Não foi possível encontrar o usuario!');
-                    }
-                    return resolve(cartoes);
+                ORDER BY historico.id DESC
+                `,[id],
+                (erro, resultados) => {
+                    console.log(resultados);
+                    if (erro) return reject('Não foi possível listar os cartoes!');
+
+                    return resolve(resultados);
                 }
-            );
+            )
         });
     }
 
+    mostrarHistorico(id) {
+        return new Promise((resolve, reject) => {
+            this._db.all(
+                `SELECT historico.id as "id", historico.date as "date", historico.autorizado as "autorizado",
+                dispositivo.id as "dispositivo_id", dispositivo.apelido as "dispositivo_apelido",
+                cartao.id as "cartao_id", cartao.apelido as "cartao_apelido",
+                usuario.id as "usuario_id", usuario.nome as "usuario_nome"
+                FROM historico
+                INNER JOIN dispositivo on historico.dispositivo = dispositivo.id
+                INNER JOIN cartao on historico.cartao = cartao.id
+                LEFT JOIN usuario on dispositivo.usuario = usuario.id
+                WHERE usuario.id = ?
+                ORDER BY historico.id DESC
+                `,[id],
+                (erro, resultados) => {
+                    if (erro) return reject('Não foi possível listar os cartoes!');
+
+                    return resolve(resultados);
+                }
+            )
+        });
+    }
     login(email) {
         return new Promise((resolve, reject) => {
             this._db.all(

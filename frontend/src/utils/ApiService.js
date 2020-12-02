@@ -1,7 +1,8 @@
 const ApiService = {
 
     ListaHistorico : () =>{
-        return fetch('http://localhost:8080/api/historicos')
+        var id = localStorage.getItem("usuario");
+        return  fetch(`http://localhost:8080/api/usuario/${id}/historico`)
         
     },
     
@@ -11,11 +12,13 @@ const ApiService = {
     },
 
     ListaCartoes : () => {
-        return fetch('http://localhost:8080/api/cartoes')
+        var id = localStorage.getItem("usuario");
+        return fetch(`http://localhost:8080/api/usuario/${id}/cartao`)
     },
 
     ListaDispositivos : () => {
-        return fetch('http://localhost:8080/api/dispositivos')
+        var id = localStorage.getItem("usuario");
+        return fetch(`http://localhost:8080/api/usuario/${id}/dispositivo`)
     },
     
     Dispositivo : (id) => {
@@ -33,7 +36,8 @@ const ApiService = {
     },
 
     ListaHistoricoDashboard : () =>{
-        return fetch(`http://localhost:8080/api/dashboard/historico`)
+        var id = localStorage.getItem("usuario");
+        return fetch(`http://localhost:8080/api/usuario/${id}/dashboard_historico`)
     },
 
     Historico : (id) => {
