@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import { Container, Row, Col, CarouselIndicators } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import Navbar from '../../components/Navbar/Navbar';
-import { Image } from 'react-bootstrap';
 import axios from 'axios';
 import { Formik, Form } from 'formik';
 
@@ -31,12 +30,7 @@ class cardDetails extends Component {
         axios.delete(`http://localhost:8080/api/cartao/deletar/${this.state.cartoes.id}`)
             .then(resp => {
                 console.log(resp);
-<<<<<<< HEAD
-            })
-=======
-                window.location.reload();
             }).catch(err => console.log(err));
->>>>>>> 8d6959f19dd44670b7a6471dd65c440955b66033
     }
 
     render() {
@@ -52,7 +46,7 @@ class cardDetails extends Component {
                         </Col>
                         <Col Col sm={10} md={10} className="p-0 main-context">
                             <div>
-                                <h1 className="title-page">CARTÕES</h1>
+                                <h1 className="title-page">DETALHES DO CARTÃO</h1>
                                 <hr className="title-line" />
                             </div>
                             <div className="padd-dash content-container">
@@ -61,9 +55,6 @@ class cardDetails extends Component {
                                 </div>
                                 <Container>
                                     <Row className="user-details">
-                                        <Col Col>
-                                            <Image src="https://img.ibxk.com.br/materias/5866/21592.jpg?w=328" fluid />
-                                        </Col>
                                         <Col Col >
 
                                             <ul className="user-card-list">
@@ -77,7 +68,7 @@ class cardDetails extends Component {
                                                 </li>
                                                 <li className="card-item">
                                                     <p className="p-text-title">Usuario</p>
-                                                    <p className="p-text-value">{cartao.usuario}</p>
+                                                    <p className="p-text-value">{cartao.usuario_nome}</p>
                                                 </li>
                                                 <li className="card-item">
                                                     <p className="p-text-title">RFID</p>
@@ -91,12 +82,13 @@ class cardDetails extends Component {
                                     <p className="p-text-title">Ações</p>
                                     <div className="flex-line">
                                         <Link to="/cartao" type="button" className="p-text-value mrg-link link-option">Voltar</Link>
+                                        <Link to={`/cartao/alterar/${cartao.id}`} type="button" className="mrg-link p-text-value link-option">Alterar Registro</Link>
+                                        <Formik initialValues={{}} onSubmit={this.excluirCartao}>
+                                            <Form>
+                                                <button className="delete-button" type="submit">Excluir Registro</button>
+                                            </Form>
+                                        </Formik>
                                     </div>
-                                    <Formik initialValues={{}} onSubmit={this.excluirCartao}>
-                                        <Form>
-                                            <button className="delete-button" type="submit">Excluir Registro</button>
-                                        </Form>
-                                    </Formik>
                                 </div>
                             </div>
                         </Col>

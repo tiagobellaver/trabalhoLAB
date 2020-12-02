@@ -1,21 +1,19 @@
 import React from 'react';
-import { Container, Row, Col, FormGroup, Label, } from 'reactstrap';
+import { Container, Row, Col, Label, } from 'reactstrap';
 import { Link } from 'react-router-dom'
 import Navbar from '../../components/Navbar/Navbar';
 import axios from 'axios';
 import * as yup from 'yup';
-import { history } from '../../history';
+import { useHistory } from "react-router-dom";
 import { Formik, Form, Field } from 'formik';
 
 const CardCreate = () => {
+    const history = useHistory();
     const handleCreate = values => {
         axios.post('http://localhost:8080/api/cartao/adicionar', values)
             .then(resp => {
-                const { data } = resp
-                if (data) {
-                    localStorage.setItem('app-token', data)
-                    history.push('/login')
-                }
+                console.log(resp);
+                history.push("/cartao");
             })
     }
 
