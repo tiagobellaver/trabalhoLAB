@@ -8,6 +8,22 @@ import CardIcon from '../../assets/card-icon.png';
 
 class Card extends Component {
 
+<<<<<<< Updated upstream
+=======
+    state = {
+        cartoes: [],
+    };
+
+    componentDidMount() {
+        ApiService.ListaCartoes()
+            .then(res => ApiService.TrataErros(res))
+            .then(res => {
+                this.setState({ cartoes: res.cartoes });
+            }).catch(err => console.log(err));
+
+    }
+
+>>>>>>> Stashed changes
     render() {
         return(
             <>

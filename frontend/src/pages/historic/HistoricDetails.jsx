@@ -13,8 +13,7 @@ class HistoricoDetails extends Component {
         const id  = this.props.match.params.id;
         ApiService.Historico(id)
             .then(res => ApiService.TrataErros(res))
-            .then(res => {
-                console.log(res.historico);
+            .then(res => {;
                 this.setState({ 
                     historico: res.historico
                 });

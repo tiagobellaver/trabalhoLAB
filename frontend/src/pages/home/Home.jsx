@@ -16,14 +16,12 @@ class Home extends Component{
         ApiService.ListaCartoes()
         .then(res => ApiService.TrataErros(res))
         .then(res => {
-            console.log(res)
             this.setState({cartoes: res.cartoes});
         }).catch(err => console.log(err));
 
         ApiService.ListaHistoricoDashboard()
         .then(res => ApiService.TrataErros(res))
         .then(res => { 
-            console.log(res)
             this.setState({historicos: res.historicos}); 
         }).catch(err => console.log(err));
     }

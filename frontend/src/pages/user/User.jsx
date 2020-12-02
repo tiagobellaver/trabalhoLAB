@@ -14,7 +14,6 @@ class User extends Component {
         ApiService.ListaUsuarios()
             .then(res => ApiService.TrataErros(res))
             .then(res => {
-                console.log(res)
                 this.setState({ usuarios: res.usuarios });
             }).catch(err => console.log(err));
 

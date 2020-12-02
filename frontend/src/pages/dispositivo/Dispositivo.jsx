@@ -14,7 +14,6 @@ class User extends Component {
         ApiService.ListaDispositivos()
         .then(res => ApiService.TrataErros(res))
         .then(res => { 
-            console.log(res)
             this.setState({dispositivos: res.dispositivos}); 
         }).catch(err => console.log(err));
 

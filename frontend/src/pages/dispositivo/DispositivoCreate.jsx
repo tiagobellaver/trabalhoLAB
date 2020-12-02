@@ -9,10 +9,8 @@ import { useHistory } from "react-router-dom";
 const DispositivoCreate = () => {
     const history = useHistory();
     const cadastrarDispositivo = values => {
-        console.log(values);
         axios.post('http://localhost:8080/api/dispositivo/adicionar', values)
             .then(resp => {
-                console.log(resp);
                 history.push("/dispositivo");
             })
     }

@@ -20,16 +20,19 @@ class UserDetails extends Component {
                 this.setState({ 
                     usuario: res.usuario,
                 });
-                console.log(res.usuario);
             }).catch(err => console.log(err));
 
     }
 
     excluirUsuario = values => {
         axios.delete(`http://localhost:8080/api/usuario/deletar/${this.state.usuario.id}`)
+<<<<<<< Updated upstream
         .then(resp => {
             console.log(resp);
         })
+=======
+        .then(resp => {}).catch(err => console.log(err));
+>>>>>>> Stashed changes
     }
 
     render() {

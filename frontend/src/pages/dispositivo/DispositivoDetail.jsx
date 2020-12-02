@@ -19,13 +19,11 @@ class DispositivoDetails extends Component {
         ApiService.Dispositivo(id)
             .then(res => ApiService.TrataErros(res))
             .then(res => {
-                console.log(res.dispositivo);
                 dispostivo_s = res.dispositivo;
 
                 ApiService.CartaoDispositivo(id)
                     .then(res => ApiService.TrataErros(res))
                     .then(res => {
-                        console.log(res.cartoes);
                         this.setState({ 
                             dispositivo: dispostivo_s,
                             cartoes: res.cartoes
@@ -38,32 +36,25 @@ class DispositivoDetails extends Component {
     mudarAutorizacao = values => {
         axios.put('http://localhost:8080/api/setarAutorizacao', values)
         .then(resp => {
-            console.log(resp);
             window.location.reload();
         })
     }
 
     removerCartao = values => {
-        console.log(values);
         axios.put('http://localhost:8080/api/removerCartao', values)
         .then(resp => {
-            console.log(resp);
             window.location.reload();
         })
     }
 
     excluirDispositivo = () => {
         axios.delete(`http://localhost:8080/api/dispositivo/deletar/${this.state.dispositivo.id}`)
-        .then(resp => {
-            console.log(resp);
-        })
+        .then(resp => {})
     }
 
     adicionarCartao = values => {
-        console.log(values);
         axios.post(`http://localhost:8080/api/adicionarCartao`, values)
         .then(resp => {
-            console.log(resp);
             window.location.reload();
         })
     }

@@ -17,11 +17,18 @@ class Cards extends Component {
 
     componentDidMount() {
         ApiService.ListaCartoes()
+<<<<<<< Updated upstream
         .then(res => ApiService.TrataErros(res))
         .then(res => {
             console.log(res)
             this.setState({cartoes: res.cartoes});
         }).catch(err => console.log(err));
+=======
+            .then(res => ApiService.TrataErros(res))
+            .then(res => {
+                this.setState({ cartoes: res.cartoes });
+            }).catch(err => console.log(err));
+>>>>>>> Stashed changes
 
     }
 

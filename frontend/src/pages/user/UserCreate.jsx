@@ -11,7 +11,6 @@ const UserCreate = () => {
         axios.post('http://localhost:8080/api/usuario/adicionar', values)
         .then(resp => {
             const { data } = resp
-            console.log(resp)
             if(data) {
                 localStorage.setItem('app-token', data)
             }

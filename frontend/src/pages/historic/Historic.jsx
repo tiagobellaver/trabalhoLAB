@@ -14,7 +14,6 @@ class Historic extends Component {
         ApiService.ListaHistorico()
         .then(res => ApiService.TrataErros(res))
         .then(res => { 
-            console.log(res)
             this.setState({historicos: res.historicos}); 
         }).catch(err => console.log(err));
 

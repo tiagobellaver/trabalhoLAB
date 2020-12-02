@@ -23,10 +23,8 @@ class UserAlter extends Component {
     }
 
     alterarUsuario= values => {
-        console.log(values);
         axios.put(`http://localhost:8080/api/usuario/editar/${this.state.usuario.id}`, values)
             .then(resp => {
-                console.log(resp);
             }).catch(err => console.log(err));
     }
 

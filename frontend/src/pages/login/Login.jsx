@@ -18,7 +18,6 @@ const Login = () => {
         axios.post('http://localhost:8080/api/usuario/login', values)
         .then(resp => {
             const data = resp.data;
-            console.log(data);
             if(data.loged) {
                 localStorage.setItem('logged', true);
                 localStorage.setItem('usuario', data.usuario)

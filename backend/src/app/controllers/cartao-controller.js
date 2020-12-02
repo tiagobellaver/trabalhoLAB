@@ -53,7 +53,6 @@ class CartaoControlador {
 
             cartaoDao.adiciona(req.body.apelido, req.body.rfid, req.body.usuario_id)
                 .then(lastId => {
-                    console.log(lastId);
                     return resp.status(200).end();
                 }).catch(erro => {
                     resp.status(500).end()

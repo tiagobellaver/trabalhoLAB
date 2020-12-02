@@ -16,8 +16,7 @@ class DispositivoAlter extends Component {
         const id  = this.props.match.params.id;
         ApiService.Dispositivo(id)
             .then(res => ApiService.TrataErros(res))
-            .then(res => {
-                console.log(res.dispositivo);
+            .then(res => {;
                 this.setState({ 
                     dispositivo: res.dispositivo
                 });
@@ -26,11 +25,8 @@ class DispositivoAlter extends Component {
     }
 
     alterarDispositivo = values => {
-        console.log(values);
         axios.put(`http://localhost:8080/api/dispositivo/editar/${this.state.dispositivo.id}`, values)
-            .then(resp => {
-                console.log(resp);
-            })
+            .then(resp => {})
             .catch(err => console.log(err));
     }
 
