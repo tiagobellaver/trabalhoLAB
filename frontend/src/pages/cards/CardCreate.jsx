@@ -14,7 +14,7 @@ const CardCreate = () => {
                 const { data } = resp
                 if (data) {
                     localStorage.setItem('app-token', data)
-                    history.phsu('/login')
+                    history.push('/login')
                 }
             })
     }
@@ -22,7 +22,7 @@ const CardCreate = () => {
     const validations = yup.object().shape({
         apelido: yup.string().required(),
         rfid: yup.string().required(),
-        usuario: yup.string().required()
+        usuario_id: yup.string().required()
     })
     return (
         <>
@@ -48,7 +48,7 @@ const CardCreate = () => {
                                                 
                                                     <div className="forms-disp">
                                                         <Label className="p-text-title" for="usuario" >Usuário do Cartão</Label><br/>
-                                                        <Field type="text" name="usuario" style={{width: '50%'}} />
+                                                        <Field type="text" name="usuario_id" style={{width: '50%'}} />
                                                     </div>
                                         
                                                     <div className="forms-disp">

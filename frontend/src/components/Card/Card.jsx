@@ -38,10 +38,15 @@ class Card extends Component {
 
 
                     <Col sm={6} md={6} lg={6}>
-                        <p><span className="card-bold">Apelido: {cartoes.apelido}</span></p>
-                        <p><span className="card-bold">Usuário:</span></p>
-                        <p><span className="card-bold">Autorizado:</span></p>
-                        <p><span className="card-bold">Status:</span></p>
+                        {cartoes.map(cartao => (
+                            <tr key={cartao.id}>
+                                <td>
+                                    {cartao.id}
+                                </td>
+                                <td>{cartao.apelido}</td>
+                            </tr>
+                        ))}
+
                     </Col>
 
                 </Col>
